@@ -11,6 +11,12 @@ const Home = () => {
       <section id="home" className="hero-section">  
         {/* hi */}
         {/* hello there  i am vrushali*/}
+
+
+
+
+
+        
         <h2>Welcome to XpenseHub System</h2>
         <p>Track, Analyze, and Optimize Your Expenses with Ease</p>
         <div className="button">
