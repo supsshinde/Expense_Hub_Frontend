@@ -1,0 +1,15 @@
+.content-container {
+    margin-top: 70px; /
+  }
+  
+    /* Ensure navbar links stack vertically in mobile */
+    .navbar-nav {
+      text-align: center;
+    }
+  
+    .navbar-nav .nav-item {
+      margin-bottom: 10px; 
+    }
+  
+  
+
