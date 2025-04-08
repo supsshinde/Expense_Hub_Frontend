@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import google from "../assets/google.png";
-
+import { NavLink } from "react-router-dom";
 
 const UserLogin = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const UserLogin = () => {
   return (
     <div className="login-background">
     <div className="form-container" style={{ marginTop: "10px " }}>
-      <div className="reg-form" style={{ height: "430px "}}>
+      <div className="reg-form" style={{ height: "440px "}}>
         <h1 className="header-text text-dark text-weight-bold p-2 fs-2 ">Login</h1>
         <form onSubmit={handleSubmit}>
 
@@ -52,9 +52,8 @@ const UserLogin = () => {
             </div>
             
           </div>
-          
 
-
+          <NavLink to="/UserRegister">Register</NavLink>
           {message && <h3 className="message">{message}</h3>}
         </form>
       </div>

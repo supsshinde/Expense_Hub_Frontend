@@ -43,7 +43,7 @@ const UserRegister = () => {
 
       <div className="image-section">
         <img src={deskImage} alt="Desk setup" />
-        <Link to="/LoginUser">Already registered ? Login Here</Link>
+        Already registered ? <Link to="/LoginUser">Login Here</Link>
       </div>
     </div>
   );
