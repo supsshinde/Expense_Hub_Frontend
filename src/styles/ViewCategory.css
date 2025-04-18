@@ -1,0 +1,17 @@
+.container {
+    max-width: 1000px;
+  }
+  
+  table {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  th, td {
+    vertical-align: middle !important;
+  }
+  
+  .btn {
+    width: 80px;
+  }
+  

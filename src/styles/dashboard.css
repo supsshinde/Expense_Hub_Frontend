@@ -1,0 +1,263 @@
+/* .dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .sidebar {
+    width: 220px;
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .sidebar-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #f8f9fa;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .sidebar-nav {
+    width: 100%;
+  }
+  
+  .menu {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .menu-item {
+    cursor: pointer;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    color: #dee2e6;
+    font-size: 16px;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .menu-item:hover {
+    background-color: #495057;
+    border-radius: 4px;
+  }
+  
+  .submenu {
+    list-style: none;
+    padding-left: 15px;
+    margin-top: 5px;
+  }
+  
+  .submenu li {
+    margin: 5px 0;
+  }
+  
+  .submenu li a {
+    color: #dee2e6;
+    text-decoration: none;
+  }
+  
+  .submenu li a:hover {
+    text-decoration: underline;
+    color: #ffffff;
+  }
+  
+  .dashboard-content {
+    flex-grow: 1;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dashboard-header {
+    background-color: #fff;
+    padding: 15px 25px;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dashboard-main-content {
+    padding: 25px;
+  }
+  
+  .logout-btn-header {
+    margin-left: auto;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .logout-btn-header:hover {
+    background-color: #c82333;
+  }
+   */
+   /* Container for the dashboard layout */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 220px;
+  background-color: #343a40;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Sidebar title */
+.sidebar-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #f8f9fa;
+  margin-bottom: 30px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Sidebar navigation */
+.sidebar-nav {
+  width: 100%;
+}
+
+/* Menu styling */
+.menu {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Menu items */
+.menu-item {
+  cursor: pointer;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: #dee2e6;
+  font-size: 16px;
+  text-align: left;
+  width: 100%;
+}
+
+/* Hover effect on menu items */
+.menu-item:hover {
+  background-color: #495057;
+  border-radius: 4px;
+}
+
+/* Submenu styling */
+.submenu {
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+
+/* Submenu list items */
+.submenu li {
+  margin: 5px 0;
+}
+
+/* Submenu links */
+.submenu li a {
+  color: #dee2e6;
+  text-decoration: none;
+}
+
+/* Hover effect on submenu links */
+.submenu li a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+/* Main content area */
+.dashboard-content {
+  flex-grow: 1;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header section */
+.dashboard-header {
+  background-color: #ffffff;
+  padding: 15px 30px; /* Increased padding for a more spacious look */
+  font-size: 22px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #e0e0e0; /* Added a subtle bottom border */
+}
+
+/* Welcome text styling */
+.dashboard-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+/* Logout button styling */
+.logout-btn-header {
+  width: 170px;  /* Set a fixed width for the button */
+  padding: 8px 15px;  /* Adjust padding if necessary */
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center; /* Ensure text is centered */
+}
+
+.logout-btn-header:hover {
+  background-color: #c82333;
+}
+
+
+/* Main content area */
+.dashboard-main-content {
+  padding: 25px;
+}
+
+.stats-cards {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.card {
+  width: 45%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 2rem;
+  color: #333;
+}

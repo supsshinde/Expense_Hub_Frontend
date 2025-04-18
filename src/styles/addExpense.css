@@ -1,0 +1,160 @@
+/* .form-container {
+    background: #fff;
+    padding: 30px;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+  }
+  
+  form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  form input,
+  form select,
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #198754;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #157347;
+  }
+   */
+   /* .add-expense-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .add-expense-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+  }
+  
+  .expense-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .expense-form input {
+    margin-bottom: 15px;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+  }
+  
+  .expense-form input:focus {
+    outline: none;
+    border-color: #495057;
+  }
+  
+  .expense-form button {
+    padding: 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .expense-form button:hover {
+    background-color: #0056b3;
+  }
+  .expense-form select {
+    margin-bottom: 15px;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+  }
+  
+  .expense-form select:focus {
+    outline: none;
+    border-color: #495057;
+  }
+     */
+     .add-expense-form {
+        max-width: 500px;
+        margin: 30px auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      
+      .add-expense-form h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+      }
+      
+      .add-expense-form form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .add-expense-form input,
+      .add-expense-form select,
+      .add-expense-form textarea {
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+      }
+      
+      .add-expense-form input:focus,
+      .add-expense-form select:focus,
+      .add-expense-form textarea:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+      
+      .add-expense-form textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+      
+      .add-expense-form button {
+        background-color: #007bff;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      
+      .add-expense-form button:hover {
+        background-color: #0056b3;
+      }
+      
