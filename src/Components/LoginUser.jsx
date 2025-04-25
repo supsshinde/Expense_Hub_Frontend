@@ -68,7 +68,7 @@ const UserLogin = () => {
   return (
     <div className="login-background">
     <div className="form-container" style={{ marginTop: "10px " }}>
-      <div className="reg-form" style={{ height: "430px "}}>
+      <div className="reg-form" style={{ height: "440px "}}>
         <h1 className="header-text text-dark text-weight-bold p-2 fs-2 ">Login</h1>
         <form onSubmit={handleSubmit}>
 
@@ -98,8 +98,6 @@ const UserLogin = () => {
             </div>
             
           </div>
-          
-
 
           {message && <h3 className="text-center mt-3">{message}</h3>}
         </form>

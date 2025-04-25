@@ -31,6 +31,10 @@ const UserRegister = () => {
 
   return (
     <div className="signup-container">
+      <div className="image-section">
+        <img src={deskImage} alt="Desk setup" />
+        Already registered ? <Link to="/LoginUser">Login Here</Link>
+      </div>
       <div className="form-section">
         <h2>Sign up</h2>
         <form>
