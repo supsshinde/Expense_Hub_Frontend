@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "../styles/Home.css";
 import Features from "./Features";
 import About from "./About";
 import Footer from "./Footer";

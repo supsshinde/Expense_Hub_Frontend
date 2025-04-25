@@ -254,6 +254,9 @@
 // export default AppWrapper;
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 import Features from "./Components/Features";
 import About from "./Components/About";
 import Home from "./Components/Home";
@@ -277,6 +280,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import AdminLogin from "./Components/AdminLogin";
 import ViewProfile from "./Components/ViewProfile";
 import EditProfile from "./Components/EditProfile";
+import Dashboard2 from "./Components/Dashboard2";
+import ForgotPassword from "./Components/ForgotPassword";
 
 const AppWrapper = () => (
   <Router>
@@ -320,7 +325,7 @@ const App = () => {
         </nav>
       )}
 
-      <div className="container mt-5 pt-5">
+      <div className="container-fluid p-0 mt-0">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
@@ -328,6 +333,8 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/UserRegister" element={<UserRegister />} />
           <Route path="/LoginUser" element={<LoginUser />} />
+          <Route path="/ResetPassword" element={<ForgotPassword />} />
+
           <Route path="/admin-dashboard" element={<AdminDashboard />}>
   <Route path="add-category" element={<AddCategory />} />
   <Route path="view-category" element={<ViewCategory />} />

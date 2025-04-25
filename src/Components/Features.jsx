@@ -2,6 +2,7 @@ import React from 'react';
 import BannerImage from '../assets/Tracking.webp';
 import BannerImage1 from '../assets/Analysis.jpg';
 import BannerImage2 from '../assets/Reports1.jpg';
+import "../styles/Features.css";
 const Features = () => {
   const features = [
     {

@@ -4,7 +4,7 @@ import google from "../assets/google.png";
 import { useNavigate } from "react-router-dom";
 
 import UserServices from "../Services/UserServices";
-
+import "../styles/Login.css";
 
 const UserLogin = () => {
   const [formData, setFormData] = useState({
@@ -19,56 +19,37 @@ const UserLogin = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
   
-  //  let promise= UserServices.loginUser(formData)
-  //     promise.then((res) => {
-  //       setMessage(res.data);
-  //       setTimeout(() => {
-  //         navigate("/dashboard");
-  //       }, 1000);
-  //     })
-  //     .catch((error) => {
-  //       if (error.response) {
-  //         setMessage(error.response.data);
-  //       } else {
-  //         setMessage("Server error. Please try again.");
-  //       }
-  //     });
-  // };
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    let promise = UserServices.loginUser(formData);
-    promise
+    UserServices.loginUser(formData)
       .then((res) => {
-        // Assuming UID is returned in response
-        const { uid } = res.data;
-        localStorage.setItem('uid', uid);
- // Store the UID in localStorage
- console.log("Logged in UID:", uid);
-
-        setMessage(res.data);
+        const { uid, message } = res.data;
+        localStorage.setItem("uid", uid);
+        console.log("Logged in UID:", uid);
+  
+        setMessage(message);
         setTimeout(() => {
           navigate("/dashboard");
         }, 1000);
       })
       .catch((error) => {
         if (error.response) {
-          setMessage(error.response.data);
+          setMessage(error.response.data.message || "Login failed.");
         } else {
           setMessage("Server error. Please try again.");
         }
       });
   };
+  
 
   
 
   return (
-    <div className="login-background">
+    <div className="login-background pt-5 mt-5">
     <div className="form-container" style={{ marginTop: "10px " }}>
-      <div className="reg-form" style={{ height: "430px "}}>
+      <div className="reg-form" style={{ height: "500px "}}>
         <h1 className="header-text text-dark text-weight-bold p-2 fs-2 ">Login</h1>
         <form onSubmit={handleSubmit}>
 

@@ -1,0 +1,107 @@
+/* Login css */
+
+  
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Form Styling */
+  .reg-form {
+    width: 100%;
+    max-width: 450px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Header Styling */
+  .header-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Groups */
+  .form-group {
+    text-align: left;
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 5px;
+  }
+  
+  /* Inputs */
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  /* Two-column layout for city and pincode */
+  .form-row {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .form-row .form-group {
+    flex: 1;
+  }
+  
+  /* Register Button */
+  .custom-btn {
+    width: 50%;
+    background-color: #2db05f;
+    color: white;
+    margin-left: px;
+    margin-top: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .custom-btn:hover {
+    background-color: #217140;
+    transform: scale(1.02);
+  }
+  
+  .custom-btn:active {
+    background-color: #1b5c32;
+    transform: scale(0.98);
+  }
+  
+  /* Success Message */
+  .message {
+    color: #28a745;
+    margin-top: 15px;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 576px) {
+    .reg-form {
+      max-width: 90%;
+      padding: 20px;
+    }
+    
+    .form-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }

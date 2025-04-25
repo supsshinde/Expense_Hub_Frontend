@@ -121,11 +121,12 @@
 // export default Dashboard;
 import React, { useState } from "react";
 import { useNavigate, Link, Outlet } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 import "../styles/dashboard.css";
 // import "../index.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const Dashboard = () => {
   const [showExpenseMenu, setShowExpenseMenu] = useState(false);
@@ -139,7 +140,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container mt-0">
       <aside className="sidebar">
         <h2 className="sidebar-title">XpenseHub</h2>
         <nav className="sidebar-nav">

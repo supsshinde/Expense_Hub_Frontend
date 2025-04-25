@@ -39,7 +39,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="login-background">
+    <div className="login-background pt-5 mt-5">
       <div className="form-container" style={{ marginTop: "10px" }}>
         <div className="reg-form" style={{ height: "430px" }}>
           <h1 className="header-text text-dark text-weight-bold p-2 fs-2 ">

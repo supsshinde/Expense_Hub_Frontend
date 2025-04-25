@@ -2,17 +2,25 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/viewExpense.css";
 import { useNavigate } from "react-router-dom";
+
 function ViewExpense() {
   const [expenses, setExpenses] = useState([]);
   const navigate = useNavigate();
-  useEffect(() => {
-    fetchExpenses();
-  }, []);
 
-  const fetchExpenses = () => {
-    axios
-      .get("http://localhost:8080/user/viewExpense")
+  // Assuming you have a way to get the logged-in user's UID, 
+  // like from a global state or context (e.g., Redux or React Context API)
+  const userId = parseInt(localStorage.getItem("uid"));
+// Example user ID for logged-in user
+
+  useEffect(() => {
+    fetchExpenses(userId);
+  }, [userId]);
+
+  const fetchExpenses = (uid) => {
+    axios.get(`http://localhost:8080/user/viewExpenseByUid?uid=${uid}`)
+
       .then((response) => {
+        console.log("Fetched expenses:", response.data); // <- Add this
         setExpenses(response.data);
       })
       .catch((error) => {
@@ -24,11 +32,10 @@ function ViewExpense() {
     const confirm = window.confirm("Are you sure you want to delete this expense?");
     if (confirm) {
       axios
-      .delete(`http://localhost:8080/user/deleteById/${eid}`)
-
+        .delete(`http://localhost:8080/user/deleteById/${eid}`)
         .then((response) => {
           alert(response.data);
-          fetchExpenses(); // refresh list after delete
+          fetchExpenses(userId); // Refresh list after delete
         })
         .catch((error) => {
           console.error("Error deleting expense:", error);
@@ -40,7 +47,6 @@ function ViewExpense() {
   const handleUpdate = (eid) => {
     navigate(`/dashboard/update-expense/${eid}`);
   };
-  
 
   return (
     <div className="view-expense-container">
@@ -66,11 +72,8 @@ function ViewExpense() {
               <td>₹{exp.eprice}</td>
               <td>{exp.paymentMethod}</td>
               <td>{exp.description}</td>
-              {/* <td>{exp.category?.cname}</td> */}
               <td>{exp.categoryName}</td>
-              {/* <td>{exp.edate}</td> ✅ Displaying date */}
               <td>{new Date(exp.expenseDate).toLocaleDateString()}</td>
-
 
               <td>
                 <button className="update-btn" onClick={() => handleUpdate(exp.eid)}>
