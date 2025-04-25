@@ -1,7 +1,52 @@
 /* Scroll Behaviour Smooth */
-html {
+/* html {
     scroll-behavior: smooth;
-  }
+  } */
+  /* home page css final */
+  /* Navbar container */
+.navbar {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+/* Navbar brand/logo */
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff !important;
+}
+
+/* Navbar links */
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+  margin: 0 10px;
+  font-size: 1rem;
+  transition: color 0.3s, border-bottom 0.3s;
+  position: relative;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #ffc107 !important; /* Bootstrap warning color */
+}
+
+/* Optional underline effect on hover */
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background-color: #ffc107;
+  transition: width 0.3s;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  width: 100%;
+}
+
 
 /* Home css */
 .hero-section{
@@ -448,3 +493,12 @@ html {
       gap: 10px;
     }
   }
+  /* dashbard css */
+  html, body, #root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  

@@ -1,0 +1,114 @@
+.budget-summary {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+  }
+  
+  .budget-summary h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .budget-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .budget-info span {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #e6f4ea;
+    color: #2e7d32;
+  }
+  
+  .over-budget {
+    background-color: #fdecea;
+    color: #d32f2f;
+  }
+  
+  .progress-bar-container {
+    width: 100%;
+    background-color: #ddd;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.4s ease;
+  }
+  
+  .progress-bar.over-limit {
+    background-color: #f44336;
+  }
+  
+  .percentage-text {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  
+  .warning-message {
+    background-color: #fdecea;
+    color: #d32f2f;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  /* Budget Table Styling */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .budget-table th,
+  .budget-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .budget-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .budget-table button {
+    margin: 0 5px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .budget-table .edit-btn {
+    background-color: #1976d2;
+    color: white;
+  }
+  
+  .budget-table .delete-btn {
+    background-color: #d32f2f;
+    color: white;
+  }
+  
+  .budget-table .edit-btn:hover {
+    background-color: #1565c0;
+  }
+  
+  .budget-table .delete-btn:hover {
+    background-color: #c62828;
+  }
+  

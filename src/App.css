@@ -1,8 +1,8 @@
-.content-container {
-    margin-top: 70px; /
+/* .content-container {
+    margin-top: 70px; 
   }
   
-    /* Ensure navbar links stack vertically in mobile */
+     Ensure navbar links stack vertically in mobile 
     .navbar-nav {
       text-align: center;
     }
@@ -12,4 +12,12 @@
     }
   
   
+ */
+ html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
 
+ 
