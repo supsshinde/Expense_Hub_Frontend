@@ -6,6 +6,9 @@ import About from "./About";
 import Footer from "./Footer";
 
 const Home = () => {
+
+
+  // Helloooo
   return (
     <div>
       <section id="home" className="hero-section mt-5 pt-5"> 
