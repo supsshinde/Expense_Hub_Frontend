@@ -1,18 +1,31 @@
 
   /* Navbar container */
-.navbar {
+/* .navbar {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
 
-/* Navbar brand/logo */
+/* Remove default spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Removes horizontal scrollbar */
+}
+
+/* Navbar brand/logo *
 .navbar-brand {
   font-size: 1.8rem;
   font-weight: 700;
   color: #ffffff !important;
 }
 
-/* Navbar links */
+/* Navbar links *
 .navbar-nav .nav-link {
   color: #ffffff !important;
   margin: 0 10px;
@@ -23,10 +36,10 @@
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-  color: #ffc107 !important; /* Bootstrap warning color */
+  color: #ffc107 !important; /* Bootstrap warning color *
 }
 
-/* Optional underline effect on hover */
+/* Optional underline effect on hover *
 .navbar-nav .nav-link::after {
   content: "";
   position: absolute;
@@ -42,9 +55,9 @@
 .navbar-nav .nav-link.active::after {
   width: 100%;
 }
+ */
 
-
-/* Home css */
+/* Home css *
 .hero-section{
     padding: 4rem 2rem;
     background: linear-gradient(135deg, #6468b8, #8f94fb);
@@ -85,7 +98,7 @@
     color: #2c2c2c;
   }
   
-  /* Responsive */
+  /* Responsive *
   @media (max-width: 768px) {
     .hero-section h2 {
       font-size: 2rem;
@@ -101,7 +114,7 @@
   }
   
 
-  /* === Key Features Section === */
+  /* === Key Features Section === *
 .key-features {
     padding: 4rem 2rem;
     background-color: #f7f9fc;
@@ -156,7 +169,7 @@
     line-height: 1.5;
   }
   
-  /* === Zigzag Section (About) === */
+  /* === Zigzag Section (About) === *
   .zigzag-section {
     padding: 4rem 2rem;
   }
@@ -207,7 +220,7 @@
     max-width: 600px;
   }
   
-  /* === Responsive Styles === */
+  /* === Responsive Styles === *
   @media (max-width: 768px) {
     .key-features h2 {
       font-size: 2rem;
@@ -228,7 +241,7 @@
     }
   }
   
-  /* About css */
+  /* About css *
 
   .about {
     background-color: #ffffff;
@@ -256,7 +269,7 @@
     color: #555;
   }
   
-  /* Responsive */
+  /* Responsive *
   @media (max-width: 768px) {
     .about-title {
       font-size: 2rem;
@@ -268,7 +281,7 @@
     }
   }
   
-  /* footer css */
+  /* footer css *
 
   .footer {
     background-color: #222;
@@ -279,7 +292,7 @@
   }
 
 
-  /* Registration css */
+  /* Registration css *
   
   
 .signup-container {
@@ -369,7 +382,7 @@
   }
   
 
-  /* Responsive */
+  /* Responsive *
   @media (max-width: 768px) {
     .signup-container {
       flex-direction: column;
@@ -382,7 +395,7 @@
     }
   }
 
-  /* Login css */
+  /* Login css
 
   
   .form-container {
@@ -392,7 +405,7 @@
     padding: 20px;
   }
   
-  /* Form Styling */
+  /* Form Styling *
   .reg-form {
     width: 100%;
     max-width: 450px;
@@ -403,7 +416,7 @@
     text-align: center;
   }
   
-  /* Header Styling */
+  /* Header Styling *
   .header-text {
     font-size: 24px;
     font-weight: bold;
@@ -411,7 +424,7 @@
     margin-bottom: 20px;
   }
   
-  /* Form Groups */
+  /* Form Groups *
   .form-group {
     text-align: left;
     margin-bottom: 15px;
@@ -425,7 +438,7 @@
     margin-left: 5px;
   }
   
-  /* Inputs */
+  /* Inputs *
   .form-control {
     width: 100%;
     padding: 10px;
@@ -435,7 +448,7 @@
     box-sizing: border-box;
   }
   
-  /* Two-column layout for city and pincode */
+  /* Two-column layout for city and pincode *
   .form-row {
     display: flex;
     gap: 15px;
@@ -445,7 +458,7 @@
     flex: 1;
   }
   
-  /* Register Button */
+  /* Register Button *
   .custom-btn {
     width: 50%;
     background-color: #2db05f;
@@ -471,13 +484,13 @@
     transform: scale(0.98);
   }
   
-  /* Success Message */
+  /* Success Message *
   .message {
     color: #28a745;
     margin-top: 15px;
   }
   
-  /* Mobile Responsive */
+  /* Mobile Responsive *
   @media (max-width: 576px) {
     .reg-form {
       max-width: 90%;
@@ -489,12 +502,6 @@
       gap: 10px;
     }
   }
-  /* dashbard css */
-  html, body, #root {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-  }
   
   
+   */
