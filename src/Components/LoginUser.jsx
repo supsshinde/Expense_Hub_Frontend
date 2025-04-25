@@ -1,54 +1,28 @@
-
 import React, { useState } from "react";
-import google from "../assets/google.png";
 import { useNavigate } from "react-router-dom";
-
 import UserServices from "../Services/UserServices";
 
-
-const UserLogin = () => {
+const AdminLogin = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  
-  //  let promise= UserServices.loginUser(formData)
-  //     promise.then((res) => {
-  //       setMessage(res.data);
-  //       setTimeout(() => {
-  //         navigate("/dashboard");
-  //       }, 1000);
-  //     })
-  //     .catch((error) => {
-  //       if (error.response) {
-  //         setMessage(error.response.data);
-  //       } else {
-  //         setMessage("Server error. Please try again.");
-  //       }
-  //     });
-  // };
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    let promise = UserServices.loginUser(formData);
+
+    // Assuming you're calling a common method for login
+    let promise = UserServices.loginUser(formData); // Or separate admin API if available
+
     promise
       .then((res) => {
-        // Assuming UID is returned in response
-        const { uid } = res.data;
-        localStorage.setItem('uid', uid);
- // Store the UID in localStorage
- console.log("Logged in UID:", uid);
-
         setMessage(res.data);
         setTimeout(() => {
           navigate("/dashboard");
@@ -63,48 +37,49 @@ const UserLogin = () => {
       });
   };
 
-  
-
   return (
-    <div className="login-background">
-    <div className="form-container" style={{ marginTop: "10px " }}>
-      <div className="reg-form" style={{ height: "440px "}}>
-        <h1 className="header-text text-dark text-weight-bold p-2 fs-2 ">Login</h1>
-        <form onSubmit={handleSubmit}>
+    <div className="container-fluid d-flex justify-content-center align-items-center mt-5" style={{ minHeight: "100vh", backgroundColor: "#f4f7fb"}}>
+      <div className="card shadow-lg p-4" style={{ width: "100%", maxWidth: "450px"}}>
+        <h1 className="text-center text-primary mb-4">User Login</h1>
 
-          <div className="form-group">
-            <label htmlFor="username">Email</label>
-            <input type="email" id="username" name="username" className="form-control" placeholder="Enter Email" required onChange={handleChange} value={formData.username} />
+        <form onSubmit={handleSubmit}  style={{ width: "400px", height:"330px"}}>
+          <div className="mb-3">
+            <label htmlFor="username" className="form-label">Email</label>
+            <input
+              type="email"
+              id="username"
+              name="username"
+              className="form-control"
+              placeholder="Enter Email"
+              required
+              onChange={handleChange}
+              value={formData.username}
+            />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" className="form-control" placeholder="Enter Password" required onChange={handleChange}  value={formData.password} />
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              className="form-control"
+              placeholder="Enter Password"
+              required
+              onChange={handleChange}
+              value={formData.password}
+            />
           </div>
 
-          <button type="submit" className="custom-btn">Login</button>
+          <button type="submit" className="btn btn-primary w-100 mt-4">Login</button>
 
-          <div className="d-flex justify-content-between p-3 0 0 0" style={{marginTop: '20px'}}>
-            <div style={{width: "40%"}}>
-            <a href="/ResetPassword" className="text-primary">Forgot Password?</a>
-            </div>
-
-            {/* <div className="text-center mt-3 ml-3">or</div> */}
-
-            <div style={{width: "60%"}}>
-            <img src={google} alt="Google logo" style={{ width: "20px", marginRight: "2%" }}/>
-            <a href="">Login with Google</a>
-          
-            </div>
-            
-          </div>
-
-          {message && <h3 className="text-center mt-3">{message}</h3>}
+         
         </form>
+
+        {message && <h3 className="text-center mt-3 text-danger">{message}</h3>}
       </div>
-    </div>
     </div>
   );
 };
 
-export default UserLogin;
+export default AdminLogin;
