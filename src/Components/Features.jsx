@@ -8,17 +8,17 @@ const Features = () => {
     {
       title: 'Efficient Inventory Tracking',
       desc: 'Track your inventory seamlessly with our advanced system.',
-      img: '/resources/img/inventry.png',
+      img: 'src/assets/Tracking.webp',
     },
     {
       title: 'Real-Time Analytics',
       desc: 'Analyze your stock data and make informed decisions with real-time analytics.',
-      img: '/resources/img/realtim.png',
+      img: 'src/assets/Analysis.jpg',
     },
     {
       title: 'Automated Reports',
       desc: 'Generate automated reports for better insights and decision-making.',
-      img: '/resources/img/autorepo.png',
+      img: 'src/assets/Reports1.jpg',
     },
   ];
 

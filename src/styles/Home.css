@@ -4,21 +4,20 @@ html, body {
     padding: 0;
     overflow-x: hidden; /* Prevent horizontal scrollbar */
   }
-  
   .hero-section {
     width: 100vw;
-    padding: 4rem 0; /* remove side padding */
-    background: linear-gradient(135deg, #6468b8, #8f94fb);
+    height: 100vh; /* Ensure it fills the entire viewport height */
+    padding: 0; /* Remove extra padding */
+    background: url('src/assets/Analysis.jpg') no-repeat center center; /* Center the image */
+    background-size: cover; /* Make sure the image covers the entire area */
     color: #fff;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    position: relative; /* For adding overlay effect */
   }
-  
-  
   
   .hero-section h2 {
     font-size: 2.5rem;

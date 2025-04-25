@@ -8,9 +8,9 @@ import Footer from "./Footer";
 const Home = () => {
   return (
     <div>
-      <section id="home" className="hero-section"> 
-        <h2>Welcome to XpenseHub System</h2>
-        <p>Track, Analyze, and Optimize Your Expenses with Ease</p>
+      <section id="home" className="hero-section mt-5 pt-5"> 
+      <h2>Welcome to XpenseHub</h2>
+      <p>Manage your finances smarter — track spending, analyze trends, and stay in control effortlessly.</p>
         <div className="button">
         <Link to="/UserRegister">Get Started</Link>
         </div>
