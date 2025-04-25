@@ -3,7 +3,8 @@ import "../styles/About.css";
 const About = () => {
   return (
     <section className="about" id="about">
-        <h2 className="about-title -0">About Us</h2>
+      <div className="about-container">
+        <h2 className="about-title">About Us</h2>
         <p className="about-text">
         Welcome to the Expense Hub Tracking System, your smart solution for managing, analyzing, and optimizing personal
          or organizational expenses. Our system empowers users to seamlessly track daily expenditures, categorize spending, 
@@ -15,6 +16,7 @@ const About = () => {
         for better budgeting decisions. With Expense Hub, discover how easy it is to take control of your spending, set financial goals,
          and build a more secure financial future.        
          </p>
+      </div>
     </section>
   );
 };

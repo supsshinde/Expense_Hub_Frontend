@@ -1,12 +1,14 @@
 .about {
-    background-color: #ffffff;
+    background-color: #dbeeff;
     padding: 4rem 2rem;
     color: #333;
+  }
+  
+  .about-container {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
   }
- 
   
   .about-title {
     font-size: 2.5rem;

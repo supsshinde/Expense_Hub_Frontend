@@ -22,7 +22,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="container mt-5" style={{ maxWidth: "400px" }}>
+    <div className="container" style={{ maxWidth: "400px", marginTop:"12%" }}>
       <h3 className="text-center mb-4">Forgot Password</h3>
       <form onSubmit={handleReset}>
         <div className="form-group">
