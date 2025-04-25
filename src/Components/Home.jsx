@@ -7,12 +7,6 @@ import Footer from "./Footer";
 
 const Home = () => {
 
-
-  // Helloooo friends
-    // Helloooo friends
-  // Helloooo friends
-  // Helloooo friends
-
   return (
     <div>
       <section id="home" className="hero-section mt-5 pt-5"> 
