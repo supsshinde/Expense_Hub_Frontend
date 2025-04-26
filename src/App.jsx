@@ -89,7 +89,7 @@ const App = () => {
 </Route>
 
           {/* Dashboard and nested routes */}
-          <Route path="/dashboard" element={<Dashboard />}>
+          {/* <Route path="/dashboard" element={<Dashboard />}>
             <Route path="add-expense" element={<AddExpense />} />
             <Route path="view-expense" element={<ViewExpense />} />
             <Route path="update-expense/:eid" element={<UpdateExpense />} />
@@ -97,7 +97,18 @@ const App = () => {
             <Route path="view-budget" element={<BudgetDashboard />} />
             <Route path="view-profile" element={<ViewProfile />} />
             <Route path="edit-profile" element={<EditProfile />} />
-          </Route>
+          </Route> */}
+          <Route path="/dashboard" element={<Dashboard />}>
+  <Route index element={<AddExpense />} /> {/* Default route */}
+  <Route path="add-expense" element={<AddExpense />} />
+  <Route path="view-expense" element={<ViewExpense />} />
+  <Route path="update-expense/:eid" element={<UpdateExpense />} />
+            <Route path="add-budget" element={<BudgetDashboard />} />
+            <Route path="view-budget" element={<BudgetDashboard />} />
+            <Route path="view-profile" element={<ViewProfile />} />
+            <Route path="edit-profile" element={<EditProfile />} />
+</Route>
+
 
           {/* Profile Routes */}
           <Route path="/profile/user" element={<LoginUser />} />

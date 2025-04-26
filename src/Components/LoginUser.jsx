@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserServices from "../Services/UserServices";
+import { Link } from "react-router-dom";
 
-const AdminLogin = () => {
+const LoginUser = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -17,16 +18,13 @@ const AdminLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Assuming you're calling a common method for login
-    let promise = UserServices.loginUser(formData); // Or separate admin API if available
-
-    promise
+  
+    UserServices.loginUser(formData)
       .then((res) => {
         setMessage(res.data);
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 1000);
+  
+        // ✅ Navigate directly to dashboard sub-route
+        navigate("/dashboard/add-expense");
       })
       .catch((error) => {
         if (error.response) {
@@ -36,6 +34,7 @@ const AdminLogin = () => {
         }
       });
   };
+  
 
   return (
     <div className="container-fluid d-flex justify-content-center align-items-center mt-5" style={{ minHeight: "100vh", backgroundColor: "#f4f7fb"}}>
@@ -72,6 +71,7 @@ const AdminLogin = () => {
           </div>
 
           <button type="submit" className="btn btn-primary w-100 mt-4">Login</button>
+          <Link to="/ResetPassword" className="text-decoration-none">Forgot Password?</Link>
 
          
         </form>
@@ -82,4 +82,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default LoginUser;
