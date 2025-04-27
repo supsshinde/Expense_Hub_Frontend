@@ -1,85 +1,64 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import UserServices from "../Services/UserServices";
+import React, { useState } from 'react';
+import "../styles/Login.css";
 
-const AdminLogin = () => {
+const LoginPage = () => {
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
+    remember: false
   });
 
-  const navigate = useNavigate();
-  const [message, setMessage] = useState("");
-
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Assuming you're calling a common method for login
-    let promise = UserServices.loginUser(formData); // Or separate admin API if available
-
-    promise
-      .then((res) => {
-        setMessage(res.data);
-        setTimeout(() => {
-          navigate("/admin-dashboard");
-        }, 1000);
-      })
-      .catch((error) => {
-        if (error.response) {
-          setMessage(error.response.data);
-        } else {
-          setMessage("Server error. Please try again.");
-        }
-      });
+    console.log(formData);
+    // You can add your login logic here
   };
 
   return (
-    <div className="container-fluid d-flex justify-content-center align-items-center mt-5" style={{ minHeight: "100vh", backgroundColor: "#f4f7fb"}}>
-      <div className="card shadow-lg p-4" style={{ width: "100%", maxWidth: "450px"}}>
-        <h1 className="text-center text-primary mb-4">Admin Login</h1>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className="avatar">
+          <i className="fa fa-user"></i>
+        </div>
+        <h2>Sign In</h2>
 
-        <form onSubmit={handleSubmit}  style={{ width: "400px", height:"330px"}}>
-          <div className="mb-3">
-            <label htmlFor="username" className="form-label">Email</label>
-            <input
-              type="email"
-              id="username"
-              name="username"
-              className="form-control"
-              placeholder="Enter Email"
-              required
-              onChange={handleChange}
-              value={formData.username}
-            />
-          </div>
+        <div className="input-group">
+          <i className="fa fa-user icon"></i>
+          <input
+            type="text"
+            placeholder="Username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              className="form-control"
-              placeholder="Enter Password"
-              required
-              onChange={handleChange}
-              value={formData.password}
-            />
-          </div>
+        <div className="input-group">
+          <i className="fa fa-lock icon"></i>
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-          <button type="submit" className="btn btn-primary w-100 mt-4">Login</button>
+        <button type="submit" className="login-button">Login</button>
 
-         
-        </form>
-
-        {message && <h3 className="text-center mt-3 text-danger">{message}</h3>}
-      </div>
+      </form>
     </div>
   );
 };
 
-export default AdminLogin;
+export default LoginPage;
