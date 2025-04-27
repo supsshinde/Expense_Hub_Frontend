@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import UserServices from '../Services/UserServices';
-import "../styles/Register.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "../styles/Login.css"; 
 
 const UserRegister = () => {
   const [user, setUser] = useState({
@@ -31,56 +30,93 @@ const UserRegister = () => {
   };
 
   return (
-    <div className="container-fluid d-flex align-items-center justify-content-center min-vh-100" style={{ background: '#f0f4ff' }}>
-      <div className="col-md-6 col-lg-5 bg-white p-5 rounded shadow">
-        <h2 className="text-center mb-4 mt-5 text-primary">Create Account</h2>
-        <form onSubmit={saveUser}>
-          <div className="mb-3">
-            <label className="form-label">Username</label>
-            <input type="text" className="form-control" name="uname" value={user.uname} onChange={uniHandler} placeholder="Enter username" required />
-          </div>
+    <div className="login-container">
+      <form className="login-form" onSubmit={saveUser}>
+        <div className="avatar">
+          <i className="fa fa-user-plus"></i> {/* Different icon for register */}
+        </div>
+        <h2>Create Account</h2>
 
-          <div className="mb-3">
-            <label className="form-label">Email</label>
-            <input type="email" className="form-control" name="email" value={user.email} onChange={uniHandler} placeholder="Enter email" required />
-          </div>
+        <div className="input-group">
+          <i className="fa fa-user icon"></i>
+          <input
+            type="text"
+            placeholder="Username"
+            name="uname"
+            value={user.uname}
+            onChange={uniHandler}
+            required
+          />
+        </div>
 
-          <div className="mb-3">
-            <label className="form-label">Password</label>
-            <input type="password" className="form-control" name="password" value={user.password} onChange={uniHandler} placeholder="Enter password" required />
-          </div>
+        <div className="input-group">
+          <i className="fa fa-envelope icon"></i>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            value={user.email}
+            onChange={uniHandler}
+            required
+          />
+        </div>
 
-          <div className="mb-3">
-            <label className="form-label">Mobile Number</label>
-            <input type="number" className="form-control" name="mobile" value={user.mobile} onChange={uniHandler} placeholder="Enter mobile number" required />
-          </div>
+        <div className="input-group">
+          <i className="fa fa-lock icon"></i>
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={user.password}
+            onChange={uniHandler}
+            required
+          />
+        </div>
 
-          <div className="mb-3">
-            <label className="form-label">City</label>
-            <input type="text" className="form-control" name="city" value={user.city} onChange={uniHandler} placeholder="Enter city" required />
-          </div>
+        <div className="input-group">
+          <i className="fa fa-phone icon"></i>
+          <input
+            type="text"
+            placeholder="Mobile Number"
+            name="mobile"
+            value={user.mobile}
+            onChange={uniHandler}
+            required
+          />
+        </div>
 
-          <div className="mb-4">
-            <label className="form-label">Pincode</label>
-            <input type="number" className="form-control" name="pincode" value={user.pincode} onChange={uniHandler} placeholder="Enter pincode" required />
-          </div>
+        <div className="input-group">
+          <i className="fa fa-city icon"></i>
+          <input
+            type="text"
+            placeholder="City"
+            name="city"
+            value={user.city}
+            onChange={uniHandler}
+            required
+          />
+        </div>
 
-          <div className="form-check mb-4">
-            <input type="checkbox" className="form-check-input" id="terms" required />
-            <label className="form-check-label" htmlFor="terms">
-              I agree to all statements in <span className="text-primary">Terms of service</span>
-            </label>
-          </div>
+        <div className="input-group">
+          <i className="fa fa-map-pin icon"></i>
+          <input
+            type="text"
+            placeholder="Pincode"
+            name="pincode"
+            value={user.pincode}
+            onChange={uniHandler}
+            required
+          />
+        </div>
 
-          <button type="submit" className="btn btn-primary w-100">Register</button>
+        <button type="submit" className="login-button">Register</button>
 
-          {msg && <p className="text-success text-center mt-3 fw-semibold">{msg}</p>}
-        </form>
+        {msg && <p className="text-success text-center mt-3 fw-semibold">{msg}</p>}
 
-        <p className="text-center mt-4">
-          Already registered? <Link to="/LoginUser" className="text-decoration-none fw-bold text-primary">Login Here</Link>
-        </p>
-      </div>
+        <div className="register">
+          <p>Already have an account? <Link to="/LoginUser">Login Here</Link></p>
+        </div>
+      </form>
     </div>
   );
 };

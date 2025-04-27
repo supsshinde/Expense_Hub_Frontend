@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
+import "../styles/Login.css"; // ✅ Reusing your Login styles
+import { Link } from "react-router-dom";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -9,34 +10,55 @@ const ForgotPassword = () => {
   const handleReset = (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:8080/user/forgotPassword", {
-      email,
-      newPassword
+    fetch("http://localhost:8080/user/forgotPassword", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, newPassword })
     })
-    .then((res) => {
-      setMessage(res.data);
-    })
-    .catch((err) => {
-      setMessage(err.response?.data || "Error occurred.");
-    });
+    .then(res => res.text())
+    .then(data => setMessage(data))
+    .catch(err => setMessage("Error occurred."));
   };
 
   return (
-    <div className="container" style={{ maxWidth: "400px", marginTop:"12%" }}>
-      <h3 className="text-center mb-4">Forgot Password</h3>
-      <form onSubmit={handleReset}>
-        <div className="form-group">
-          <label>Email address</label>
-          <input type="email" className="form-control" value={email}
-            onChange={(e) => setEmail(e.target.value)} required />
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleReset}>
+        <div className="avatar">
+          <i className="fa fa-lock"></i>
         </div>
-        <div className="form-group mt-3">
-          <label>New Password</label>
-          <input type="password" className="form-control" value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)} required />
+        <h2>Reset Password</h2>
+
+        <div className="input-group">
+          <i className="fa fa-envelope icon"></i>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-        <button type="submit" className="btn btn-primary w-100 mt-4">Reset Password</button>
-        {message && <div className="alert alert-info mt-3 text-center">{message}</div>}
+
+        <div className="input-group">
+          <i className="fa fa-key icon"></i>
+          <input
+            type="password"
+            placeholder="Enter new password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            required
+          />
+        </div>
+
+        <button type="submit" className="login-button">Reset Password</button>
+
+        {message && <div className="alert alert-info mt-3">{message}</div>}
+
+        <div className="register mt-4">
+          <p>Remember your password? <Link to="/LoginUser">Login Here</Link></p>
+        </div>
       </form>
     </div>
   );

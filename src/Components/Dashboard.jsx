@@ -1,198 +1,193 @@
-
-
-
-// import React, { useState } from "react";
-// import { useNavigate, Link, Outlet } from "react-router-dom";
-// import "../index.css";
-
-// const Dashboard = () => {
-//   const [showExpenseMenu, setShowExpenseMenu] = useState(false);
-//   const [showBudgetMenu, setShowBudgetMenu] = useState(false);
-//   const navigate = useNavigate();
-
-//   const toggleExpenseMenu = () => setShowExpenseMenu(!showExpenseMenu);
-//   const toggleBudgetMenu = () => setShowBudgetMenu(!showBudgetMenu);
-
-//   const handleLogout = () => {
-//     navigate("/LoginUser");
-//   };
-
-//   return (
-//     <div className="dashboard-container">
-//       <aside className="sidebar">
-//         <h2 className="sidebar-title">XpenseHub</h2>
-//         <nav className="menu">
-//           <div className="menu-item" onClick={toggleExpenseMenu}>
-//             Expense ▸
-//             {showExpenseMenu && (
-//               <ul className="submenu">
-//                 <li><Link to="add-expense">Add Expense</Link></li>
-//                 <li><Link to="view-expense">View Expense</Link></li>
-//               </ul>
-//             )}
-//           </div>
-//           <div className="menu-item" onClick={toggleBudgetMenu}>
-//             Budget ▸
-//             {showBudgetMenu && (
-//               <ul className="submenu">
-//                 <li><Link to="add-budget">Add Budget</Link></li>
-//                 <li><Link to="view-budget">View Budget</Link></li>
-//               </ul>
-//             )}
-//           </div>
-//         </nav>
-//       </aside>
-
-//       <main className="dashboard-content">
-//         <div className="dashboard-header">
-//           <span>Welcome to Your Expense Dashboard</span>
-//           <button className="logout-btn-header" onClick={handleLogout}>Logout</button>
-//         </div>
-
-//         <div className="dashboard-main-content">
-//           {/* Here goes nested content like AddExpense, ViewExpense */}
-//           <Outlet />
-//         </div>
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
-// import React, { useState } from "react";
-// import { useNavigate, Link, Outlet } from "react-router-dom";
-// import "../styles/dashboard.css"
-// import "../index.css";
-
-// const Dashboard = () => {
-//   const [showExpenseMenu, setShowExpenseMenu] = useState(false);
-//   const [showBudgetMenu, setShowBudgetMenu] = useState(false);
-//   const navigate = useNavigate();
-
-//   const handleLogout = () => {
-//     navigate("/LoginUser");
-//   };
-
-//   return (
-//     <div className="dashboard-container" style={{ display: "flex", height: "100vh" }}>
-//       <aside className="sidebar" style={{ width: "250px", background: "#333", color: "#fff", padding: "20px" }}>
-//         <h2>XpenseHub</h2>
-//         <nav>
-//           <div>
-//             <button onClick={() => setShowExpenseMenu(!showExpenseMenu)} style={{ color: "white", background: "none", border: "none" }}>
-//               Expense ▸
-//             </button>
-//             {showExpenseMenu && (
-//               <ul>
-//                 <li><Link to="add-expense" style={{ color: "white" }}>Add Expense</Link></li>
-//                 <li><Link to="view-expense" style={{ color: "white" }}>View Expense</Link></li>
-//               </ul>
-//             )}
-//           </div>
-//           <div>
-//             <button onClick={() => setShowBudgetMenu(!showBudgetMenu)} style={{ color: "white", background: "none", border: "none" }}>
-//               Budget ▸
-//             </button>
-//             {showBudgetMenu && (
-//               <ul>
-//                 <li><Link to="add-budget" style={{ color: "white" }}>Add Budget</Link></li>
-//                 <li><Link to="view-budget" style={{ color: "white" }}>View Budget</Link></li>
-//               </ul>
-//             )}
-//           </div>
-//         </nav>
-//       </aside>
-
-//       <main style={{ flexGrow: 1, padding: "20px" }}>
-//         <header style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
-//           <h3>Welcome to Your Dashboard</h3>
-//           <button onClick={handleLogout} style={{ backgroundColor: "red", color: "white", border: "none", padding: "5px 10px" }}>
-//             Logout
-//           </button>
-//         </header>
-//         <div className="dashboard-main-content">
-//           <Outlet />
-//         </div>
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
 import React, { useState } from "react";
-import { useNavigate, Link, Outlet } from "react-router-dom";
-
-
+import { useNavigate, Link, Outlet, useLocation } from "react-router-dom";
 import "../styles/dashboard.css";
-// import "../index.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import {
+  FaWallet,
+  FaHistory,
+  FaPlusCircle,
+  FaSave,
+  FaChartPie,
+  FaCog,
+  FaSignOutAlt,
+  FaRegUserCircle,
+} from "react-icons/fa";
 
 const Dashboard = () => {
   const [showExpenseMenu, setShowExpenseMenu] = useState(false);
   const [showBudgetMenu, setShowBudgetMenu] = useState(false);
-  const [showProfileMenu, setShowProfileMenu] = useState(false); // ✅ New state for Profile menu
-
+  const [showSettingsMenu, setShowSettingsMenu] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleLogout = () => {
-    navigate("/LoginUser");
-  };
+  const handleLogout = () => navigate("/LoginUser");
+
+  // Dummy data for stats
+  const stats = [
+    { label: "Income", value: "15 000", color: "green", icon: <FaWallet /> },
+    { label: "Expense", value: "8 540", color: "crimson", icon: <FaChartPie /> },
+    { label: "Cash in hand", value: "6 460", color: "royalblue", icon: <FaWallet /> },
+    { label: "No of transactions", value: "15", color: "deeppink", icon: <FaHistory /> },
+  ];
+
+  // Determine if at dashboard root (no child route)
+  const isDashboardRoot = location.pathname === "/dashboard" || location.pathname === "/";
 
   return (
-    <div className="dashboard-container mt-0">
+    <div className="dashboard-container">
       <aside className="sidebar">
-        <h2 className="sidebar-title">XpenseHub</h2>
+        <h2 className="sidebar-title">MyWallet</h2>
         <nav className="sidebar-nav">
-          {/* Expense Menu */}
+          <Link to="" className="menu-item">
+            <FaWallet className="me-2" /> Dashboard
+          </Link>
+
+          {/* Expense menu */}
           <div className="menu">
-            <button className="menu-item" onClick={() => setShowExpenseMenu(!showExpenseMenu)}>
-              Expense ▸
-            </button>
+            <div
+              className="menu-item clickable"
+              onClick={() => setShowExpenseMenu(!showExpenseMenu)}
+            >
+              <FaPlusCircle className="me-2" /> Expense
+            </div>
             {showExpenseMenu && (
               <ul className="submenu">
-                <li><Link to="add-expense">Add Expense</Link></li>
-                <li><Link to="view-expense">View Expense</Link></li>
+                <li>
+                  <Link
+                    to="add-expense"
+                    onClick={() => setShowExpenseMenu(false)}
+                  >
+                    Add Expense
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="view-expense"
+                    onClick={() => setShowExpenseMenu(false)}
+                  >
+                    View Expense
+                  </Link>
+                </li>
               </ul>
             )}
           </div>
 
-          {/* Budget Menu */}
+          {/* Budget menu */}
           <div className="menu">
-            <button className="menu-item" onClick={() => setShowBudgetMenu(!showBudgetMenu)}>
-              Budget ▸
-            </button>
+            <div
+              className="menu-item clickable"
+              onClick={() => setShowBudgetMenu(!showBudgetMenu)}
+            >
+              <FaChartPie className="me-2" /> Budget
+            </div>
             {showBudgetMenu && (
               <ul className="submenu">
-                <li><Link to="add-budget">Add Budget</Link></li>
-                <li><Link to="view-budget">View Budget</Link></li>
+                <li>
+                  <Link
+                    to="add-budget"
+                    onClick={() => setShowBudgetMenu(false)}
+                  >
+                    Add Budget
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="view-budget"
+                    onClick={() => setShowBudgetMenu(false)}
+                  >
+                    View Budget
+                  </Link>
+                </li>
               </ul>
             )}
           </div>
 
-          {/* ✅ Profile Menu */}
+          {/* Settings menu */}
           <div className="menu">
-            <button className="menu-item" onClick={() => setShowProfileMenu(!showProfileMenu)}>
-              Profile ▸
-            </button>
-            {showProfileMenu && (
+            <div
+              className="menu-item clickable"
+              onClick={() => setShowSettingsMenu(!showSettingsMenu)}
+            >
+              <FaCog className="me-2" /> Settings
+            </div>
+            {showSettingsMenu && (
               <ul className="submenu">
-                <li><Link to="view-profile">View Profile</Link></li>
-                <li><Link to="edit-profile">Edit Profile</Link></li>
+               
+                <li>
+                  <Link
+                    to="view-profile"
+                    onClick={() => setShowSettingsMenu(false)}
+                  >
+                    View Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="edit-profile"
+                    onClick={() => setShowSettingsMenu(false)}
+                  >
+                    Edit Profile
+                  </Link>
+                </li>
               </ul>
             )}
+          </div>
+
+          <div className="menu-item clickable logout-btn" onClick={handleLogout}>
+            <FaSignOutAlt className="me-2" /> Log out
           </div>
         </nav>
       </aside>
 
       <main className="dashboard-content">
         <header className="dashboard-header">
-          <h3>Welcome to Your Dashboard</h3>
-          <button className="logout-btn-header" onClick={handleLogout}>
-            Logout
-          </button>
+          <div className="header-left">
+            <h3>Dashboard</h3>
+            <select className="month-select">
+              <option>April 2024</option>
+              <option>May 2024</option>
+            </select>
+          </div>
+          <div className="header-right">
+            <FaRegUserCircle size={32} className="me-2 text-light" />
+            <span className="text-light">John Doe</span>
+          </div>
         </header>
+
         <div className="dashboard-main-content">
+          {isDashboardRoot && (
+            <>
+              {/* Stats cards */}
+              <div className="stats-row">
+                {stats.map((s, i) => (
+                  <div key={i} className="stat-card" style={{ borderTop: `4px solid ${s.color}` }}>
+                    <div className="stat-icon" style={{ color: s.color }}>{s.icon}</div>
+                    <div className="stat-info">
+                      <div className="stat-value">Rs. {s.value}</div>
+                      <div className="stat-label">{s.label}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Charts */}
+              <div className="charts-row">
+                <div className="chart-card">
+                  <div className="chart-header">Expense Breakdown</div>
+                  <div className="chart-body" />
+                </div>
+                <div className="chart-card">
+                  <div className="chart-header d-flex justify-content-between align-items-center">
+                    <span>Budget: 10 000</span>
+                    <button className="btn-edit">Edit</button>
+                  </div>
+                  <div className="chart-body" />
+                  <div className="chart-footer">Remaining: 1 460</div>
+                </div>
+              </div>
+            </>
+          )}
+
+          {/* Render nested route */}
           <Outlet />
         </div>
       </main>

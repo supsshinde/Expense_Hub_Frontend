@@ -1,7 +1,8 @@
 .about {
-    background-color: #dbeeff;
+    background: linear-gradient(135deg, #e6eef6, #e3e9f0);
     padding: 4rem 2rem;
     color: #333;
+    height: 510px;
   }
   
   .about-container {

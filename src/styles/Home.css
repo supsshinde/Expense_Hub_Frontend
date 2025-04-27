@@ -8,7 +8,7 @@ html, body {
     width: 100vw;
     height: 100vh; /* Ensure it fills the entire viewport height */
     padding: 0; /* Remove extra padding */
-    background: url('src/assets/Analysis.jpg') no-repeat center center; /* Center the image */
+    background: url('src/assets/Dashboard.png') no-repeat center center; /* Center the image */
     background-size: cover; /* Make sure the image covers the entire area */
     color: #fff;
     text-align: center;
@@ -20,14 +20,18 @@ html, body {
   }
   
   .hero-section h2 {
-    font-size: 2.5rem;
+    color: black;
+    font-size: 4.0rem;
     margin-bottom: 1rem;
-    font-weight: bold;
+    margin-right: 35%;
+    font-weight:bolder
   }
   
   .hero-section p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    color: black;
+    font-size: 1.7rem;
+    margin-right: 35%;
+    margin-bottom: 3rem;
     max-width: 600px;
   }
   
@@ -36,6 +40,7 @@ html, body {
     background-color: #fff;
     color: #4e54c8;
     padding: 0.75rem 1.5rem;
+    margin-right: 600px;
     border-radius: 30px;
     font-weight: 600;
     text-decoration: none;
