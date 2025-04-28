@@ -6,17 +6,17 @@ html, body {
   }
   .hero-section {
     width: 100vw;
-    height: 100vh; /* Ensure it fills the entire viewport height */
-    padding: 0; /* Remove extra padding */
-    background: url('src/assets/Dashboard.png') no-repeat center center; /* Center the image */
-    background-size: cover; /* Make sure the image covers the entire area */
+    height: 100vh; 
+    padding: 0; 
+    background: url('src/assets/Dashboard.png') no-repeat center center; 
+    background-size: cover; 
     color: #fff;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative; /* For adding overlay effect */
+    position: relative; 
   }
   
   .hero-section h2 {
