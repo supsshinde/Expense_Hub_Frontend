@@ -1,7 +1,7 @@
-// export default AllUsers;
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
+import "../styles/AllUsers.css"; 
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
@@ -10,7 +10,8 @@ const AllUsers = () => {
   const usersPerPage = 5;
 
   useEffect(() => {
-    axios.get("http://localhost:8080/admin/viewUsers")
+    axios
+      .get("http://localhost:8080/admin/viewUsers")
       .then((res) => setUsers(res.data))
       .catch(() => alert("Error fetching users"));
   }, []);
@@ -20,7 +21,6 @@ const AllUsers = () => {
     user.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Pagination logic
   const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -35,109 +35,98 @@ const AllUsers = () => {
   const exportToCSV = () => {
     const csvRows = [
       ["UID", "Name", "Email", "Registered On", "Mobile", "City", "Pincode"],
-      ...filteredUsers.map(user => [
+      ...filteredUsers.map((user) => [
         user.uid,
         user.uname,
         user.email,
         new Date(user.created_date).toLocaleDateString(),
         user.mobile,
         user.city,
-        user.pincode
-      ])
+        user.pincode,
+      ]),
     ];
-    const csvContent = csvRows.map(e => e.join(",")).join("\n");
+    const csvContent = csvRows.map((e) => e.join(",")).join("\n");
     const blob = new Blob([csvContent], { type: "text/csv" });
     saveAs(blob, "all_users.csv");
   };
+
   const handleDeleteUser = async (uid) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        const response = await axios.delete(`http://localhost:8080/admin/deleteUser/${uid}`);
-        alert(response.data); // e.g. "User deleted" or "User not found"
-        setUsers(users.filter(user => user.uid !== uid)); // Update UI
+        await axios.delete(`http://localhost:8080/admin/deleteUser/${uid}`);
+        setUsers(users.filter((user) => user.uid !== uid));
       } catch (err) {
         alert("Error deleting user");
       }
     }
   };
-  
 
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">All Registered Users</h2>
-
-      <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-        <input
-          type="text"
-          placeholder="Search by name or email..."
-          value={searchTerm}
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-            setCurrentPage(1); // Reset to page 1 on search
-          }}
-          className="form-control mb-2"
-          style={{ maxWidth: "300px" }}
-        />
-        <button onClick={exportToCSV} className="btn btn-outline-success mb-2">
-          Export CSV
-        </button>
+    <div className="all-users-wrapper">
+      <div className="header-actions">
+        <h2>All Registered Users</h2>
+        <div className="header-tools">
+          <input
+            type="text"
+            placeholder="Search by name or email..."
+            value={searchTerm} 
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setCurrentPage(1);
+            }}
+          />
+          <button onClick={exportToCSV}>Export CSV</button>
+        </div>
       </div>
 
-      <div className="table-responsive">
-        <table className="table table-striped table-bordered">
-          <thead className="table-dark">
-            <tr>
-              <th>UID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Registered On</th>
-              <th>Mobile</th>
-              <th>City</th>
-              <th>Pincode</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-  {filteredUsers.length === 0 ? (
-    <tr>
-      <td colSpan="8" className="text-center">No users found</td>
-    </tr>
-  ) : (
-    filteredUsers.map(user => (
-      <tr key={user.uid}>
-        <td>{user.uid}</td>
-        <td>{user.uname}</td>
-        <td>{user.email}</td>
-        <td>{new Date(user.created_date).toLocaleDateString()}</td>
-        <td>{user.mobile}</td>
-        <td>{user.city}</td>
-        <td>{user.pincode}</td>
-        <td>
-          <button
-            className="btn btn-sm btn-danger"
-            onClick={() => handleDeleteUser(user.uid)}
-          >
-            Delete
-          </button>
-        </td>
-      </tr>
-    ))
-  )}
-</tbody>
-
-        </table>
+      <div className="card-table-header">
+        <span>UID</span>
+        <span>Name</span>
+        <span>Email</span>
+        <span>Registered</span>
+        <span>Mobile</span>
+        <span>City</span>
+        <span>Pincode</span>
+        <span>Action</span>
       </div>
 
-      {/* Pagination Controls */}
+      <div className="user-cards-container">
+        {currentUsers.length === 0 ? (
+          <p className="no-users">No users found</p>
+        ) : (
+          currentUsers.map((user) => (
+            <div className="user-card-row" key={user.uid}>
+              <span>{user.uid}</span>
+              <span>{user.uname}</span>
+              <span>{user.email}</span>
+              <span>{new Date(user.created_date).toLocaleDateString()}</span>
+              <span>{user.mobile}</span>
+              <span>{user.city}</span>
+              <span>{user.pincode}</span>
+              <span className="action-column">
+                <button
+                  title="Delete"
+                  className="action-btn delete"
+                  onClick={() => handleDeleteUser(user.uid)}
+                >
+                  🗑️
+                </button>
+              </span>
+            </div>
+          ))
+        )}
+      </div>
+
       {totalPages > 1 && (
-        <div className="d-flex justify-content-center mt-3">
-          <button className="btn btn-outline-primary me-2" onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>
+        <div className="pagination-controls">
+          <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>
             Prev
           </button>
-          <span className="align-self-center mx-2">
-            Page {currentPage} of {totalPages}
+          {/* <span>Page {currentPage} </span> */}
+          <span className="page-info text-dark">
+            Page {currentPage} 
           </span>
-          <button className="btn btn-outline-primary ms-2" onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages}>
+          <button onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages}>
             Next
           </button>
         </div>
@@ -147,4 +136,3 @@ const AllUsers = () => {
 };
 
 export default AllUsers;
-

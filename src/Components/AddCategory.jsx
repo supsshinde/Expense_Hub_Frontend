@@ -1,12 +1,13 @@
-// export default AddCategory;
 import React, { useState } from "react";
 import axios from "axios";
-import "../styles/AddCategory.css"; // External CSS
-import { FaFolderPlus } from "react-icons/fa";
+import "../styles/AddCategory.css";
+import { FaFolderPlus, FaListUl } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const AddCategory = () => {
   const [categoryName, setCategoryName] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,31 +29,44 @@ const AddCategory = () => {
 
   return (
     <div className="add-category-container">
-      <div className="add-category-card">
-        <h2><FaFolderPlus style={{ marginRight: "8px", color: "#007bff" }} /> Add Category</h2>
+      <form className="add-category-form" onSubmit={handleSubmit}>
+        <div className="avatar">
+          <FaFolderPlus style={{ color: "white", fontSize: "30px" }} />
+        </div>
+        <h2>Add Category</h2>
 
-        <form onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <i className="fas fa-tag"></i>
-            <input
-              type="text"
-              placeholder="Enter Category Name"
-              value={categoryName}
-              onChange={(e) => setCategoryName(e.target.value)}
-              required
-              className="form-input"
-            />
-          </div>
-          <button type="submit" className="submit-btn">Add Category</button>
-        </form>
+        <div className="input-group">
+          <i className="fa fa-tag icon"></i>
+          <input
+            type="text"
+            placeholder="Enter Category Name"
+            name="categoryName"
+            value={categoryName}
+            onChange={(e) => setCategoryName(e.target.value)}
+            required
+          />
+        </div>
 
+        <button type="submit" className="submit-btn">Add Category</button>
+
+        {/* View Categories button inside the form */}
+        
         {message && (
-          <div className="form-message">{message}</div>
+          <div className="form-message mt-5" style={{ color: "green", width: "90%", justifyContent: "center", marginRight: "40px", marginLeft: "40px" }}>{message}</div>
         )}
-      </div>
+
+        <button
+          type="button"
+          className="view-category-btn"
+          onClick={() => navigate("/admin-dashboard/view-category")}
+        >
+          <FaListUl style={{ marginRight: "8px" }} />
+          View Categories
+        </button>
+
+      </form>
     </div>
   );
 };
 
 export default AddCategory;
-

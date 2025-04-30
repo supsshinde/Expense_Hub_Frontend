@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import UserServices from '../Services/UserServices';
-import "../styles/Login.css"; 
+import "../styles/Login.css";
 
 const UserRegister = () => {
   const [user, setUser] = useState({
@@ -30,10 +30,10 @@ const UserRegister = () => {
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={saveUser}>
+    <div className="login-container" style={{ marginTop: "50px"}}>
+      <form className="login-form" onSubmit={saveUser}  style={{width: "600px", maxWidth: "90%", marginTop: "50px" }} >
         <div className="avatar">
-          <i className="fa fa-user-plus"></i> {/* Different icon for register */}
+          <i className="fa fa-user-plus"></i>
         </div>
         <h2>Create Account</h2>
 
@@ -85,28 +85,31 @@ const UserRegister = () => {
           />
         </div>
 
-        <div className="input-group">
-          <i className="fa fa-city icon"></i>
-          <input
-            type="text"
-            placeholder="City"
-            name="city"
-            value={user.city}
-            onChange={uniHandler}
-            required
-          />
-        </div>
+        {/* Updated Section: City + Pincode in one line */}
+        <div className="input-row">
+          <div className="input-group">
+            <i className="fa fa-city icon"></i>
+            <input
+              type="text"
+              placeholder="City"
+              name="city"
+              value={user.city}
+              onChange={uniHandler}
+              required
+            />
+          </div>
 
-        <div className="input-group">
-          <i className="fa fa-map-pin icon"></i>
-          <input
-            type="text"
-            placeholder="Pincode"
-            name="pincode"
-            value={user.pincode}
-            onChange={uniHandler}
-            required
-          />
+          <div className="input-group">
+            <i className="fa fa-map-pin icon"></i>
+            <input
+              type="text"
+              placeholder="Pincode"
+              name="pincode"
+              value={user.pincode}
+              onChange={uniHandler}
+              required
+            />
+          </div>
         </div>
 
         <button type="submit" className="login-button">Register</button>

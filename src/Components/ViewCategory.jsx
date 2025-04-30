@@ -1,20 +1,21 @@
-// export default ViewCategory;
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { motion } from "framer-motion";
 import "../styles/ViewCategory.css";
 
 const ViewCategory = () => {
   const [categories, setCategories] = useState([]);
   const [editingCategoryId, setEditingCategoryId] = useState(null);
   const [editedCategoryName, setEditedCategoryName] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const categoriesPerPage = 5;
 
   const fetchCategories = () => {
-    axios.get("http://localhost:8080/admin/viewCategory")
-      .then(res => setCategories(res.data))
-      .catch(err => toast.error("Error fetching categories"));
+    axios
+      .get("http://localhost:8080/admin/viewCategory")
+      .then((res) => setCategories(res.data))
+      .catch(() => toast.error("Error fetching categories"));
   };
 
   useEffect(() => {
@@ -22,12 +23,15 @@ const ViewCategory = () => {
   }, []);
 
   const handleDelete = (cid) => {
-    axios.delete(`http://localhost:8080/admin/deleteCategory/${cid}`)
-      .then(res => {
-        toast.success(res.data);
-        fetchCategories();
-      })
-      .catch(() => toast.error("Error deleting category"));
+    if (window.confirm("Are you sure you want to delete this category?")) {
+      axios
+        .delete(`http://localhost:8080/admin/deleteCategory/${cid}`)
+        .then((res) => {
+          toast.success(res.data);
+          fetchCategories();
+        })
+        .catch(() => toast.error("Error deleting category"));
+    }
   };
 
   const startEditing = (cid, cname) => {
@@ -36,11 +40,12 @@ const ViewCategory = () => {
   };
 
   const handleUpdate = () => {
-    axios.put("http://localhost:8080/admin/updateCategory", {
-      cid: editingCategoryId,
-      cname: editedCategoryName
-    })
-      .then(res => {
+    axios
+      .put("http://localhost:8080/admin/updateCategory", {
+        cid: editingCategoryId,
+        cname: editedCategoryName,
+      })
+      .then((res) => {
         toast.success(res.data);
         setEditingCategoryId(null);
         fetchCategories();
@@ -48,64 +53,103 @@ const ViewCategory = () => {
       .catch(() => toast.error("Error updating category"));
   };
 
+  // Pagination logic
+  const indexOfLastCategory = currentPage * categoriesPerPage;
+  const indexOfFirstCategory = indexOfLastCategory - categoriesPerPage;
+  const currentCategories = categories.slice(indexOfFirstCategory, indexOfLastCategory);
+  const totalPages = Math.ceil(categories.length / categoriesPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
-    <motion.div 
-      className="container mt-5"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <ToastContainer position="top-center" autoClose={2000} />
+    <div className="category-wrapper">
+      <div className="category-container">
+        <ToastContainer position="top-center" autoClose={2000} />
 
-      <h2 className="text-center mb-4">📂 Category List</h2>
+        <div className="header-actions">
+          <h2>📂 Category List</h2>
+          <button
+            className="header-tools-button" style={{ width: "250px", marginTop: "70px" }}
+            onClick={() => (window.location.href = "/admin-dashboard/add-category")}
+          >
+            ➕ Add Category
+          </button>
+        </div>
 
-      <div className="table-responsive">
-        <table className="table table-hover table-bordered shadow-sm">
-          <thead className="table-dark">
-            <tr>
-              <th>ID</th>
-              <th>Category Name</th>
-              <th colSpan="2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {categories.map(cat => (
-              <motion.tr 
-                key={cat.cid}
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <td>{cat.cid}</td>
-                <td>
+        <div className="category-table-header">
+          <span>ID</span>
+          <span>Category Name</span>
+          <span>Edit</span>
+          <span>Delete</span>
+        </div>
+
+        <div className="category-cards-container">
+          {currentCategories.length === 0 ? (
+            <p className="no-users">No categories found</p>
+          ) : (
+            currentCategories.map((cat) => (
+              <div className="category-card-row" key={cat.cid}>
+                <span>{cat.cid}</span>
+                <span>
                   {editingCategoryId === cat.cid ? (
                     <input
                       type="text"
-                      className="form-control"
                       value={editedCategoryName}
                       onChange={(e) => setEditedCategoryName(e.target.value)}
+                      className="edit-input"
                     />
                   ) : (
                     cat.cname
                   )}
-                </td>
-                <td>
+                </span>
+                <span className="action-column">
                   {editingCategoryId === cat.cid ? (
-                    <button className="btn btn-success btn-sm" onClick={handleUpdate}> Save</button>
+                    <button className="action-btn" onClick={handleUpdate}>
+                      💾
+                    </button>
                   ) : (
-                    <button className="btn btn-primary btn-sm" onClick={() => startEditing(cat.cid, cat.cname)}> Edit</button>
+                    <button className="action-btn" onClick={() => startEditing(cat.cid, cat.cname)}>
+                      ✏️
+                    </button>
                   )}
-                </td>
-                <td>
-                  <button className="btn btn-danger btn-sm" onClick={() => handleDelete(cat.cid)}> Delete</button>
-                </td>
-              </motion.tr>
-            ))}
-          </tbody>
-        </table>
+                </span>
+                <span className="action-column">
+                  <button className="action-btn delete" onClick={() => handleDelete(cat.cid)}>
+                    🗑️
+                  </button>
+                </span>
+              </div>
+            ))
+          )}
+        </div>
+
+        {totalPages > 1 && (
+        <div className="pagination">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="prev-btn"
+          >
+            Prev
+          </button>
+          <span className="page-info text-dark">
+            Page {currentPage} 
+          </span>
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="next-btn"
+          >
+         Next
+         </button>
+        </div>
+)}
+
       </div>
-    </motion.div>
+    </div>
   );
 };
 
 export default ViewCategory;
-
