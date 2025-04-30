@@ -1,17 +1,142 @@
-.container {
-    max-width: 1000px;
-  }
-  
-  table {
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  
-  th, td {
-    vertical-align: middle !important;
-  }
-  
-  .btn {
-    width: 80px;
-  }
-  
+.category-wrapper {
+  padding: 40px 20px;
+  background-color: #f1f3f9;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.category-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-right: 50px;
+  margin-bottom: 20px;
+}
+
+.header-actions h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.header-tools-button {
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  background-color: #294c71;
+}
+
+.header-tools-button:hover {
+  background-color: #1c3b5a;
+}
+
+.category-table-header {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
+  background: #e9ecef;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #495057;
+  margin-bottom: 10px;
+}
+
+.category-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-card-row {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
+  align-items: center;
+  padding: 14px 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  font-size: 14px;
+  color: #343a40;
+}
+.action-column {
+  display: flex;
+  justify-content: center;
+  gap: 16rem; /* Add spacing between Edit and Delete buttons */
+}
+
+.action-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f1f3f5;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.action-btn:hover {
+  background-color: green;
+}
+
+.action-btn.delete:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.edit-input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.no-users {
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.prev-btn, .next-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #294c71;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.prev-btn:disabled, .next-btn:disabled {
+  background-color: #b0c4de;
+  cursor: not-allowed;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: #1c3b5a;
+}
+
+.page-info {
+  font-weight: bold;
+}

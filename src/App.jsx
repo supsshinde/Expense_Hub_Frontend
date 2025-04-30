@@ -1,10 +1,16 @@
 // src/App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+  useLocation,
+} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Components
 import Home from "./Components/Home";
@@ -18,7 +24,7 @@ import AdminDashboard from "./Components/AdminDashboard";
 import AddCategory from "./Components/AddCategory";
 import ViewCategory from "./Components/ViewCategory";
 import AllUsers from "./Components/AllUsers";
-import Dashboard from "./Components/Dashboard";
+import UserDashboard from "./Components/UserDashboard";
 import BudgetDashboard from "./Components/BudgetDashboard";
 import AddExpense from "./Components/AddExpense";
 import ViewExpense from "./Components/ViewExpense";
@@ -35,7 +41,10 @@ const AppWrapper = () => (
 
 const App = () => {
   const location = useLocation();
-  const hideNav = location.pathname.startsWith("/dashboard") || location.pathname.startsWith("/admin-dashboard");
+
+  const hideNav =
+    location.pathname.includes("/user/dashboard") ||
+    location.pathname.includes("/admin-dashboard");
 
   return (
     <>
@@ -43,7 +52,9 @@ const App = () => {
       {!hideNav && (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <div className="container">
-            <NavLink className="navbar-brand fw-bold" to="/">XpenseHub</NavLink>
+            <NavLink className="navbar-brand fw-bold" to="/">
+              XpenseHub
+            </NavLink>
             <button
               className="navbar-toggler"
               type="button"
@@ -55,37 +66,51 @@ const App = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/home">Home</NavLink>
+                  <NavLink className="nav-link" to="/home">
+                    Home
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/features">Features</NavLink>
+                  <NavLink className="nav-link" to="/features">
+                    Features
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/services">Services</NavLink>
+                  <NavLink className="nav-link" to="/services">
+                    Services
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/about">About</NavLink>
+                  <NavLink className="nav-link" to="/about">
+                    About
+                  </NavLink>
                 </li>
                 <li className="nav-item dropdown">
-                <NavLink
-                  className="nav-link dropdown-toggle"
-                  to="#"
-                  id="profileDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                >
-                  Profile
-                </NavLink>
-                <ul className="dropdown-menu" aria-labelledby="profileDropdown">
-                  <li>
-                    <NavLink className="dropdown-item" to="/profile/user">User</NavLink>
-                  </li>
-                  <li>
-                    <NavLink className="dropdown-item" to="/profile/admin">Admin</NavLink>
-                  </li>
-                </ul>
-              </li>
-
+                  <NavLink
+                    className="nav-link dropdown-toggle"
+                    to="#"
+                    id="profileDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                  >
+                    Profile
+                  </NavLink>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="profileDropdown"
+                  >
+                    <li>
+                      <NavLink className="dropdown-item" to="/userRegister">
+                        User
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink className="dropdown-item" to="/adminLogin">
+                        Admin
+                      </NavLink>
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>
@@ -99,18 +124,17 @@ const App = () => {
           <Route path="/features" element={<Features />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
-
           <Route path="/userRegister" element={<UserRegister />} />
           <Route path="/loginUser" element={<LoginUser />} />
           <Route path="/resetPassword" element={<ForgotPassword />} />
 
-          <Route path="/admin-dashboard" element={<AdminDashboard />}>      
+          <Route path="/admin-dashboard" element={<AdminDashboard />}>
             <Route path="add-category" element={<AddCategory />} />
             <Route path="view-category" element={<ViewCategory />} />
             <Route path="all-users" element={<AllUsers />} />
           </Route>
 
-          <Route path="/dashboard" element={<Dashboard />}> 
+          <Route path="/user/dashboard" element={<UserDashboard />}>
             <Route path="add-expense" element={<AddExpense />} />
             <Route path="view-expense" element={<ViewExpense />} />
             <Route path="update-expense/:eid" element={<UpdateExpense />} />
@@ -129,4 +153,3 @@ const App = () => {
 };
 
 export default AppWrapper;
-
