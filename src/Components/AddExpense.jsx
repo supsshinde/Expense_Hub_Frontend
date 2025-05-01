@@ -1,120 +1,88 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "../styles/addExpense.css"; // Your CSS file
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/AddExpense.css';
 
-function AddExpense() {
-  const [expense, setExpense] = useState({
-    ename: "",
-    eprice: "",
-    paymentMethod: "",
-    description: "",
-    cid: "",
-    uid: localStorage.getItem("uid"), // ✅ get uid from localStorage
+const AddExpense = () => {
+  const [formData, setFormData] = useState({
+    title: '',
+    amount: '',
+    date: '',
+    category: '',
   });
 
-  const [categories, setCategories] = useState([]);
-
-  // ✅ Fetch category list from backend
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/admin/viewCategory")
-      .then((response) => {
-        setCategories(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching categories:", error);
-      });
-  }, []);
-
   const handleChange = (e) => {
-    setExpense({
-      ...expense,
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // ✅ Ensure uid is present
-    const uid = localStorage.getItem("uid");
-    if (!uid) {
-      alert("User not logged in");
-      return;
-    }
-
-    // ✅ Add uid to the expense object before sending
-    const updatedExpense = { ...expense, uid: uid };
-
-    axios
-      .post("http://localhost:8080/user/addExpense", updatedExpense)
-      .then((response) => {
-        alert(response.data);
-        setExpense({
-          ename: "",
-          eprice: "",
-          paymentMethod: "",
-          description: "",
-          cid: "",
-          uid: uid, // ✅ Preserve uid
-        });
-      })
-      .catch((error) => {
-        console.error("Error adding expense:", error);
-        alert("Failed to add expense");
-      });
+    // Submit logic goes here
+    console.log(formData);
   };
 
   return (
-    <div className="add-expense-form">
-      <h2>Add Expense</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="ename"
-          value={expense.ename}
-          onChange={handleChange}
-          placeholder="Expense Name"
-          required
-        />
-        <input
-          type="number"
-          name="eprice"
-          value={expense.eprice}
-          onChange={handleChange}
-          placeholder="Amount"
-          required
-        />
-        <select
-          name="paymentMethod"
-          value={expense.paymentMethod}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Payment Method</option>
-          <option value="Cash">Cash</option>
-          <option value="Card">Card</option>
-          <option value="UPI">UPI</option>
-        </select>
-        <textarea
-          name="description"
-          value={expense.description}
-          onChange={handleChange}
-          placeholder="Description"
-        />
-        <select name="cid" value={expense.cid} onChange={handleChange} required>
-          <option value="">Select Category</option>
-          {categories.map((cat) => (
-            <option key={cat.cid} value={cat.cid}>
-              {cat.cname}
-            </option>
-          ))}
-        </select>
+    <div className="add-expense-container">
+      <div className="add-expense-header">
+        <h2>Add Expense</h2>
+        <Link to="/user/dashboard/view-expense" className="btn-view-expense">
+          View Expenses
+        </Link>
+      </div>
 
-        <button type="submit">Add Expense</button>
+      <form className="expense-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Title</label>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Amount</label>
+          <input
+            type="number"
+            name="amount"
+            value={formData.amount}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Date</label>
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Category</label>
+          <input
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <button type="submit" className="btn-submit-expense">
+          Add Expense
+        </button>
       </form>
     </div>
   );
-}
+};
 
 export default AddExpense;

@@ -1,11 +1,12 @@
-/* overall layout */
+/*
+/* overall layout 
 .dashboard-container {
   display: flex;
   min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* sidebar */
+/* sidebar 
 .sidebar {
   width: 240px;
   background: #1e2733;
@@ -44,7 +45,7 @@
   cursor: pointer;
 }
 
-/* main area */
+/* main area 
 .dashboard-content {
   flex: 1;
   background: #28303f;
@@ -75,14 +76,14 @@
   align-items: center;
 }
 
-/* content */
+/* content 
 .dashboard-main-content {
   padding: 1.5rem 2rem;
   flex: 1;
   overflow-y: auto;
 }
 
-/* stats row */
+/* stats row 
 .stats-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
@@ -110,7 +111,7 @@
   color: #666;
 }
 
-/* charts row */
+/* charts row 
 .charts-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
@@ -147,7 +148,7 @@
   font-weight: 500;
 }
 
-/* responsive: collapse sidebar under 768px */
+/* responsive: collapse sidebar under 768px 
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
@@ -162,4 +163,5 @@
   .sidebar-title { display: none; }
   .sidebar-nav .menu-item { margin: 0; padding: 0.5rem; font-size: 0.9rem; }
   .dashboard-content { margin-top: 56px; }
-}
+} 
+

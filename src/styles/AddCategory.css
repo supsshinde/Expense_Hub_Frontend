@@ -5,19 +5,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 40px 20px;
+  /* background: linear-gradient(135deg, #e0eafc, #cfdef3); */
+  background-color: #f1f3f9;
+
 }
 
 /* Form box styling */
 .add-category-form {
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
   width: 100%;
   max-width: 500px;
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: 40px 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 /* Icon at the top */
@@ -32,43 +36,41 @@
   align-items: center;
 }
 
-.avatar i, .avatar svg {
+.avatar i,
+.avatar svg {
   color: white;
   font-size: 30px;
 }
 
 h2 {
-  margin-bottom: 30px;
-  color: #444;
+  margin-bottom: 25px;
+  color: #1c1c1c;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 /* Input with icon */
 .input-group {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   border-radius: 10px;
-}
-
-.input-group .icon {
-  position: absolute;
-  
-  transform: translateY(-50%);
-  color: #555;
+  width: 100%;
 }
 
 .input-group input {
   width: 100%;
-  border: 1px solid black;
- text-align: center;
- justify-content: center;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.7);
+  padding: 12px 16px;
+  padding-left: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.85);
   font-size: 16px;
   color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .input-group input::placeholder {
-  color: #666;
+  color: #888;
 }
 
 /* Submit button */
@@ -79,8 +81,9 @@ h2 {
   background-color: #4A90E2;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -91,15 +94,17 @@ h2 {
 
 /* View Category button */
 .view-category-btn {
-  width: 57%;
-  margin-top: 30px;
-  padding: 10px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
   background-color: #1f3a93;
   color: white;
-  border-radius: 20px;
+  border: none;
+  border-radius: 10px;
   font-size: 16px;
-  justify-content: center;
-  align-items: center;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .view-category-btn:hover {
@@ -112,18 +117,28 @@ h2 {
   padding: 12px;
   background-color: #e6f4ff;
   color: #0b5394;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 500;
 }
 
 /* Responsive styles */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .add-category-form {
     padding: 30px 20px;
   }
 
+  .input-group input {
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+
+  .submit-btn,
   .view-category-btn {
-    flex-direction: row;
-    font-size: 14px;
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
   }
 }

@@ -75,7 +75,7 @@ const AllUsers = () => {
               setCurrentPage(1);
             }}
           />
-          <button onClick={exportToCSV}>Export CSV</button>
+          <button onClick={exportToCSV} style={{ backgroundColor: "green" }}>Export CSV</button>
         </div>
       </div>
 
@@ -106,10 +106,10 @@ const AllUsers = () => {
               <span className="action-column">
                 <button
                   title="Delete"
-                  className="action-btn delete"
+                  className="action-btn delete" style={{ width: "60px", marginRight: "75px", justifyContent: "center" }}
                   onClick={() => handleDeleteUser(user.uid)}
                 >
-                  🗑️
+                     🗑️
                 </button>
               </span>
             </div>

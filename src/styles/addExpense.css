@@ -1,59 +1,69 @@
-     .add-expense-form {
-        max-width: 500px;
-        margin: 30px auto;
-        padding: 30px;
-        background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      }
-      
-      .add-expense-form h2 {
-        text-align: center;
-        margin-bottom: 25px;
-        color: #333;
-      }
-      
-      .add-expense-form form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-      
-      .add-expense-form input,
-      .add-expense-form select,
-      .add-expense-form textarea {
-        padding: 10px 12px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 16px;
-        transition: border-color 0.3s;
-      }
-      
-      .add-expense-form input:focus,
-      .add-expense-form select:focus,
-      .add-expense-form textarea:focus {
-        border-color: #007bff;
-        outline: none;
-      }
-      
-      .add-expense-form textarea {
-        resize: vertical;
-        min-height: 80px;
-      }
-      
-      .add-expense-form button {
-        background-color: #007bff;
-        color: white;
-        padding: 12px;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-      
-      .add-expense-form button:hover {
-        background-color: #0056b3;
-      }
-      
+.add-expense-container {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.add-expense-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-expense-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.btn-view-expense {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-view-expense:hover {
+  background-color: #0056b3;
+}
+
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 500px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-submit-expense {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-submit-expense:hover {
+  background-color: #218838;
+}
