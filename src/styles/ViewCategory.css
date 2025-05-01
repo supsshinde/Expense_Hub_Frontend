@@ -83,6 +83,8 @@
   background-color: #f1f3f5;
   cursor: pointer;
   font-size: 16px;
+  justify-content: center;
+  margin-right: 120px;
   transition: background-color 0.3s ease, transform 0.2s;
 }
 
@@ -121,6 +123,8 @@
   padding: 10px 16px;
   border: none;
   border-radius: 8px;
+  width: 25%;
+  margin-top: 20px;
   background-color: #294c71;
   color: white;
   font-weight: 600;
