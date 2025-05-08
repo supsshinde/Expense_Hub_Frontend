@@ -1,0 +1,77 @@
+.profile-container {
+  min-width: 100%;
+  background: url('src/assets/Slide4.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  }
+  
+  .profile-card {
+    background-color: #ffffff;
+    width: 100%;
+    min-height: 600px;
+    max-width: 500px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .profile-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .profile-avatar {
+    background-color: #007bff;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 50px;
+  }
+  
+  .profile-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #343a40;
+    margin-bottom: 50px;
+  }
+  
+  .profile-details {
+    text-align: left;
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+
+  .profile-details p {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px 0;
+    font-size: 19px;
+    color: #020202;
+    line-height: 1.9; 
+  }
+  
+  
+  .edit-button {
+    margin-top: 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-button:hover {
+    background-color: #0056b3;
+  }
+  

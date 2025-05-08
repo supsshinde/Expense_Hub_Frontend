@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/EditProfile.css';
+
 const EditProfile = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -8,7 +10,9 @@ const EditProfile = () => {
     city: '',
     pincode: ''
   });
-const navigate = useNavigate();
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     const uid = localStorage.getItem("uid");
     if (uid) {
@@ -33,18 +37,20 @@ const navigate = useNavigate();
   }, []);
 
   const handleChange = (e) => {
-    setFormData({ 
-      ...formData, 
-      [e.target.name]: e.target.value 
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
     });
   };
+
   const handleBackToProfile = () => {
-    navigate('/user/dashboard/view-profile'); // Navigate back to profile view page
+    navigate('/user/dashboard/view-profile');
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     const uid = localStorage.getItem("uid");
+
     if (!uid) {
       alert("User ID not found. Please login again.");
       return;
@@ -56,7 +62,6 @@ const navigate = useNavigate();
       mobile: formData.mobile,
       city: formData.city,
       pincode: formData.pincode,
-    
     };
 
     try {
@@ -77,44 +82,81 @@ const navigate = useNavigate();
   };
 
   return (
-    <div className="container mt-4">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card shadow p-4">
-            <h2 className="mb-4 text-center">Edit Profile</h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label className="form-label">Name</label>
-                <input type="text" className="form-control" name="name" value={formData.name} onChange={handleChange} required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Mobile</label>
-                <input type="text" className="form-control" name="mobile" value={formData.mobile} onChange={handleChange} required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">City</label>
-                <input type="text" className="form-control" name="city" value={formData.city} onChange={handleChange} required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Pincode</label>
-                <input type="text" className="form-control" name="pincode" value={formData.pincode} onChange={handleChange} required />
-              </div>
-              <div className="text-center">
-                <button type="submit" className="btn btn-primary w-100">Update Profile</button>
-              </div>
-            </form>
-            <div className="mt-3 text-center">
-              <button onClick={handleBackToProfile} className="btn btn-secondary w-100">Back to Profile</button>
-            </div>
-          </div>
+    <div className="edit-profile-container" style={{ marginTop: "50px" }}>
+    <form className="edit-profile-form" onSubmit={handleSubmit} style={{ width: "600px", maxWidth: "90%", marginTop: "50px" }}>
+      <div className="avatar-icon">
+        <i className="fa fa-user-edit"></i>
+      </div>
+      <h2>Edit Profile</h2>
+  
+      <div className="input-group-edit">
+        <i className="fa fa-user icon"></i>
+        <input
+          type="text"
+          placeholder="Name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+      </div>
+  
+      <div className="input-group-edit">
+        <i className="fa fa-envelope icon"></i>
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+      </div>
+  
+      <div className="input-group-edit">
+        <i className="fa fa-phone icon"></i>
+        <input
+          type="text"
+          placeholder="Mobile"
+          name="mobile"
+          value={formData.mobile}
+          onChange={handleChange}
+          required
+        />
+      </div>
+  
+      <div className="input-row-edit">
+        <div className="input-group-edit">
+          <i className="fa fa-city icon"></i>
+          <input
+            type="text"
+            placeholder="City"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+            required
+          />
+        </div>
+  
+        <div className="input-group-edit">
+          <i className="fa fa-map-pin icon"></i>
+          <input
+            type="text"
+            placeholder="Pincode"
+            name="pincode"
+            value={formData.pincode}
+            onChange={handleChange}
+            required
+          />
         </div>
       </div>
-    </div>
-  );
+  
+      <button type="submit" className="edit-profile-button">Update Profile</button>
+  
+      <button type="button" className="back-profile-button" onClick={handleBackToProfile}>Back to Profile</button>
+    </form>
+  </div>
+    );
 };
 
 export default EditProfile;

@@ -1,13 +1,15 @@
-// export default ViewProfile;
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/UserProfile.css';
 import { useNavigate } from 'react-router-dom';
+import { FaUserAlt } from 'react-icons/fa';
 
-const ViewProfile = () => {
+const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
   useEffect(() => {
     const uid = localStorage.getItem('uid');
     if (!uid) {
@@ -37,43 +39,30 @@ const ViewProfile = () => {
   if (error) return <div className="alert alert-danger mt-4 text-center">{error}</div>;
 
   return (
-    <div
-      className="d-flex justify-content-center align-items-center"
-      style={{
-        height: "100vh",
-        overflow: "hidden",
-        backgroundColor: "#e6f2ff",
-        padding: "10px"
-      }}
-    >
-      <div className="card shadow-lg border-0 w-100" style={{ maxWidth: "500px", backgroundColor: "#00008B" }}>
-        <div className="card-header bg-primary text-white text-center">
-          <h3 className="mb-0">User Profile</h3>
+    <div className="profile-container">
+      <div className="profile-card">
+        <div className="profile-avatar">
+          <FaUserAlt size={60} />
         </div>
-        <div className="card-body text-center">
+        <h3 className="profile-title">Welcome {user.uname}</h3>
 
-          {/* Profile Picture */}
-          <img
-            src="https://via.placeholder.com/100"
-            alt="Profile"
-            className="rounded-circle mb-3"
-            style={{ width: "100px", height: "100px", objectFit: "cover", border: "3px solid #007bff" }}
-          />
-
-          <p><strong className="text-secondary">Name:</strong> {user.uname}</p>
-          <p><strong className="text-secondary">Email:</strong> {user.email}</p>
-          <p><strong className="text-secondary">Mobile:</strong> {user.mobile}</p>
-          <p><strong className="text-secondary">City:</strong> {user.city}</p>
-          <p><strong className="text-secondary">Pincode:</strong> {user.pincode}</p>
-
-          <button className="btn btn-outline-primary" onClick={() => navigate('/user/dashboard/edit-profile')}>
-  Edit Profile
-</button>
-
+        <div className="profile-details">
+          <p><strong>Name:</strong> {user.uname}</p>
+          <p><strong>Email:</strong> {user.email}</p>
+          <p><strong>Mobile:</strong> {user.mobile}</p>
+          <p><strong>City:</strong> {user.city}</p>
+          <p><strong>Pincode:</strong> {user.pincode}</p>
         </div>
+
+        <button
+          className="edit-button"
+          onClick={() => navigate('/user/dashboard/edit-profile')}
+        >
+          ✏️ Edit Profile
+        </button>
       </div>
     </div>
   );
 };
 
-export default ViewProfile;
+export default UserProfile;
