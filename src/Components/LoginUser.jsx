@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -19,8 +21,14 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    // You can add your login logic here
+
+    // Simulate login logic - replace this with actual authentication
+    if (formData.username && formData.password) {
+      console.log("Login successful:", formData);
+      navigate("/user/dashboard"); // Navigate to user dashboard
+    } else {
+      alert("Please enter both username and password");
+    }
   };
 
   return (
@@ -64,7 +72,6 @@ const LoginPage = () => {
         <div className="forgot-password">
           <Link to="/resetPassword" className="mt-3">Forgot Password?</Link>
         </div>
-
       </form>
     </div>
   );
