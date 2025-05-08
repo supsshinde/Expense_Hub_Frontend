@@ -16,8 +16,13 @@ const AddCategory = () => {
 
     try {
       const res = await axios.post("http://localhost:8080/admin/addCategory", category);
-      setMessage(res.data);
-      setCategoryName("");
+
+      if (res.data === "Category Added") {
+        setMessage("✅ Category successfully added!");
+        setCategoryName("");
+      } else {
+        setMessage("❌ Failed to add category.");
+      }
     } catch (error) {
       if (error.response) {
         setMessage(error.response.data);
@@ -49,21 +54,28 @@ const AddCategory = () => {
 
         <button type="submit" className="submit-btn">Add Category</button>
 
-        {/* View Categories button inside the form */}
-        
         {message && (
-          <div className="form-message mt-5" style={{ color: "green", width: "90%", justifyContent: "center", marginRight: "40px", marginLeft: "40px" }}>{message}</div>
+          <div
+            className="form-message mt-5"
+            style={{
+              color: message.includes("successfully") ? "green" : "red",
+              width: "90%",
+              justifyContent: "center",
+              margin: "15px auto",
+            }}
+          >
+            {message}
+          </div>
         )}
 
         <button
           type="button"
           className="view-category-btn"
-          onClick={() => navigate("/admin-dashboard/view-category")}
+          onClick={() => navigate("/adminDashboard/view-category")}
         >
           <FaListUl style={{ marginRight: "8px" }} />
           View Categories
         </button>
-
       </form>
     </div>
   );

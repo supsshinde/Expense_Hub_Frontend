@@ -72,7 +72,7 @@ const ViewCategory = () => {
           <h2>📂 Category List</h2>
           <button
             className="header-tools-button" style={{ width: "250px", marginTop: "70px" }}
-            onClick={() => (window.location.href = "/admin-dashboard/add-category")}
+            onClick={() => (window.location.href = "/adminDashboard/add-category")}
           >
             ➕ Add Category
           </button>
