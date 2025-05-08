@@ -1,7 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
 import ExpensePieChart from './ExpensePiechart';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+
 import BudgetPieChart from "./BudgetPiechart";
 import '../styles/UserDashboard.css';
 import axios from 'axios';
@@ -92,6 +93,13 @@ useEffect(() => {
     { name: 'Utilities', amount: 1040 },
   ];
 
+  const navigate = useNavigate();
+
+const handleLogout = () => {
+  localStorage.clear(); // or remove specific items like localStorage.removeItem('uid');
+  navigate('/'); // Redirect to home page
+};
+
   return (
     <div className="dashboard-container">
       <aside className="sidebar">
@@ -122,9 +130,9 @@ useEffect(() => {
               <FontAwesomeIcon icon={faCogs} /> <span>Settings</span>
             </Link>
           </li>
-          <li className="logout text-danger">
-            <FontAwesomeIcon icon={faSignOutAlt} /> <span>Log out</span>
-          </li>
+          <li className="logout text-danger" onClick={handleLogout} style={{ cursor: 'pointer' }}>
+  <FontAwesomeIcon icon={faSignOutAlt} /> <span>Log out</span>
+</li>
         </ul>
       </aside>
 
