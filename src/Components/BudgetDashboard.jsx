@@ -1,59 +1,92 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/BudgetDashboard.css';
+import React, { useEffect, useState } from "react";
+import BudgetForm from "./BudgetForm";
+import axios from "axios";
+import "../styles/Budget.css";
 
 const BudgetDashboard = () => {
   const [budgets, setBudgets] = useState([]);
+  const [editingBudget, setEditingBudget] = useState(null);
+  const [summary, setSummary] = useState({ totalBudget: 0, totalExpense: 0, message: "" });
 
   const uid = localStorage.getItem("uid");
 
-  useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    if (!userId) return;
+  const fetchBudgets = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8080/user/viewBudgetsByUid/${uid}`);
+      setBudgets(res.data);
+    } catch (err) {
+      console.error("Error fetching budgets:", err);
+    }
+  };
 
-    fetch(`http://localhost:8080/api/budgets/user/${userId}`)
-      .then((res) => res.json())
-      .then((data) => setBudgets(data))
-      .catch((err) => console.error(err));
+  const fetchBudgetSummary = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8080/user/budget-expense-summary/${uid}`);
+      setSummary(res.data);
+    } catch (err) {
+      console.error("Error fetching budget summary:", err);
+    }
+  };
+
+  const handleDelete = async (bid) => {
+    try {
+      await axios.delete(`http://localhost:8080/user/deleteBudgetById/${bid}`);
+      fetchBudgets();
+      fetchBudgetSummary(); // update summary after deletion
+    } catch (err) {
+      console.error("Error deleting budget:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchBudgets();
+    fetchBudgetSummary();
   }, []);
 
   return (
-    <div className="budget-dashboard-container">
-      <div className="budget-header">
-        <h2>Your Budgets</h2>
-        <Link to="/user/dashboard/add-budget" className="btn-add-budget">
-          Add Budget
-        </Link>
+    <div className="budget-dashboard">
+      <h2>Budget Dashboard</h2>
+
+      <div className="budget-summary">
+        <p><strong>Total Budget:</strong> ₹{summary.totalBudget}</p>
+        <p><strong>Total Expense:</strong> ₹{summary.totalExpense}</p>
+        <p><strong>Status:</strong> {summary.message}</p>
       </div>
 
-      {budgets.length === 0 ? (
-        <p>No budgets found.</p>
-      ) : (
-        <table className="budget-table">
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>Amount (Rs.)</th>
-              <th>Month</th>
-              <th>Actions</th>
+      <BudgetForm
+        uid={uid}
+        fetchBudgets={fetchBudgets}
+        editingBudget={editingBudget}
+        setEditingBudget={setEditingBudget}
+      />
+
+      <table className="budget-table">
+        <thead>
+          <tr>
+            <th>Sr No.</th>
+            <th>Amount</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th colSpan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {budgets.map((b, index) => (
+            <tr key={b.bid}>
+              <td>{index + 1}</td>
+              <td>₹{b.budgetAmount}</td>
+              <td>{new Date(b.startDate).toLocaleDateString()}</td>
+              <td>{new Date(b.endDate).toLocaleDateString()}</td>
+              <td>
+                <button onClick={() => setEditingBudget(b)}>Edit</button>
+              </td>
+              <td>
+                <button onClick={() => handleDelete(b.bid)}>Delete</button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {budgets.map((budget) => (
-              <tr key={budget.id}>
-                <td>{budget.category}</td>
-                <td>{budget.amount}</td>
-                <td>{budget.month}</td>
-                <td>
-                  <Link to={`/user/dashboard/edit-budget/${budget.id}`} className="btn-edit">
-                    Edit
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
