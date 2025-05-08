@@ -1,12 +1,13 @@
 // export default ViewProfile;
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 
 const ViewProfile = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const uid = localStorage.getItem('uid');
     if (!uid) {
@@ -45,7 +46,7 @@ const ViewProfile = () => {
         padding: "10px"
       }}
     >
-      <div className="card shadow-lg border-0 w-100" style={{ maxWidth: "500px", backgroundColor: "#f0f8ff" }}>
+      <div className="card shadow-lg border-0 w-100" style={{ maxWidth: "500px", backgroundColor: "#00008B" }}>
         <div className="card-header bg-primary text-white text-center">
           <h3 className="mb-0">User Profile</h3>
         </div>
@@ -65,10 +66,10 @@ const ViewProfile = () => {
           <p><strong className="text-secondary">City:</strong> {user.city}</p>
           <p><strong className="text-secondary">Pincode:</strong> {user.pincode}</p>
 
-          {/* Edit Profile Button */}
-          <button className="btn btn-outline-primary mt-3" onClick={() => alert("Edit Profile clicked!")}>
-            Edit Profile
-          </button>
+          <button className="btn btn-outline-primary" onClick={() => navigate('/user/dashboard/edit-profile')}>
+  Edit Profile
+</button>
+
         </div>
       </div>
     </div>

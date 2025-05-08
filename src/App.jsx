@@ -112,7 +112,7 @@ const App = () => {
             <Route path="add-expense" element={<AddExpense />} />
             <Route path="view-expense" element={<ViewExpense />} />
             <Route path="update-expense/:eid" element={<UpdateExpense />} />
-            <Route path="add-budget" element={<BudgetDashboard />} />
+            {/* <Route path="add-budget" element={<BudgetDashboard />} /> */}
             <Route path="view-budget" element={<BudgetDashboard />} />
             <Route path="view-profile" element={<ViewProfile />} />
             <Route path="edit-profile" element={<EditProfile />} />
