@@ -41,10 +41,6 @@ const BudgetDashboard = () => {
   useEffect(() => {
     fetchBudgets();
     fetchBudgetSummary();
-    fetch(`http://localhost:8080/budgets/user/${userId}`)
-      .then((res) => res.json())
-      .then((data) => setBudgets(data))
-      .catch((err) => console.error(err));
   }, []);
 
   return (
