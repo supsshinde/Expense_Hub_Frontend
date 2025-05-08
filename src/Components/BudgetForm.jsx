@@ -1,11 +1,13 @@
+// BudgetForm.js
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../styles/Budget.css";
 import "../styles/BudgetForm.css";
-const BudgetForm = ({ fetchBudgets, editingBudget, setEditingBudget }) => {
+
+const BudgetForm = ({ fetchBudgets, editingBudget, setEditingBudget, uid }) => {
   const [budgetAmount, setBudgetAmount] = useState("");
   const [endDate, setEndDate] = useState("");
-
-  const uid = 1; // Replace with logged-in user's uid
 
   useEffect(() => {
     if (editingBudget) {
@@ -16,52 +18,85 @@ const BudgetForm = ({ fetchBudgets, editingBudget, setEditingBudget }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = {
+
+    // Include startDate when editing
+    const budgetData = {
+      budgetAmount,
+      endDate,
       uid: uid,
-      budgetAmount: parseFloat(budgetAmount),
-      endDate: endDate,
+      ...(editingBudget && { startDate: editingBudget.startDate })
     };
 
     try {
       if (editingBudget) {
-        // Update
-        await axios.put("http://localhost:8080/user/updateBudgetById", {
-          ...payload,
-          bid: editingBudget.bid,
-          startDate: editingBudget.startDate, // send original startDate
-        });
+        // Update existing budget
+        await axios.put(`http://localhost:8080/user/updateBudgetById/${editingBudget.bid}`, budgetData);
+
+        console.log("Budget updated successfully!");
+        alert("Budget updated successfully!");
         setEditingBudget(null);
       } else {
-        // Add
-        await axios.post("http://localhost:8080/user/addBudget", payload);
+        // Add new budget
+        await axios.post("http://localhost:8080/user/addBudget", budgetData);
+
+        console.log("Budget added successfully!");
+        alert("Budget added successfully!");
       }
+
       setBudgetAmount("");
       setEndDate("");
       fetchBudgets();
     } catch (err) {
-      console.error("Error adding/updating budget", err);
+      console.error("Error saving budget", err);
+      alert("Something went wrong! Please try again.");
     }
   };
 
+  const handleCancel = () => {
+    setEditingBudget(null);
+    setBudgetAmount("");
+    setEndDate("");
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>{editingBudget ? "Update Budget" : "Add Budget"}</h3>
-      <input
-        type="number"
-        placeholder="Budget Amount"
-        value={budgetAmount}
-        onChange={(e) => setBudgetAmount(e.target.value)}
-        required
-      />
-      <input
-        type="date"
-        placeholder="End Date"
-        value={endDate}
-        onChange={(e) => setEndDate(e.target.value)}
-        required
-      />
-      <button type="submit">{editingBudget ? "Update" : "Add"}</button>
-    </form>
+    <div className="budget-form">
+      <h3>{editingBudget ? "Edit Budget" : "Add Budget"}</h3>
+
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Budget Amount:</label>
+          <input
+            type="number"
+            value={budgetAmount}
+            onChange={(e) => setBudgetAmount(e.target.value)}
+            required
+            placeholder="Enter budget amount"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>End Date:</label>
+          <input
+            type="date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-buttons">
+          <button type="submit" className="submit-button">
+            {editingBudget ? "Update Budget" : "Add Budget"}
+          </button>
+
+          {editingBudget && (
+            <button type="button" className="cancel-button" onClick={handleCancel}>
+              Cancel
+            </button>
+          )}
+        </div>
+      </form>
+    </div>
   );
 };
 
