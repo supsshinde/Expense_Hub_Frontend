@@ -19,17 +19,44 @@ const LoginPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Simulate login logic - replace this with actual authentication
-    if (formData.username && formData.password) {
-      console.log("Login successful:", formData);
-      navigate("/user/dashboard"); // Navigate to user dashboard
-    } else {
+  
+    if (!formData.username || !formData.password) {
       alert("Please enter both username and password");
+      return;
+    }
+  
+    try {
+      const response = await fetch("http://localhost:8080/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Login successful:", data);
+  
+        // Optionally store user ID in local storage or context
+        localStorage.setItem("uid", data.uid);
+  
+        navigate("/user/dashboard"); // Redirect on success
+      } else {
+        const errorText = await response.text();
+        alert(errorText || "Login failed");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred while logging in. Please try again.");
     }
   };
+  
 
   return (
     <div className="login-container">

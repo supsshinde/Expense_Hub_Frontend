@@ -50,7 +50,7 @@ const Dashboard = () => {
             </Link>
           </li>
           <li className={isActive('/user/dashboard/view-expense') ? 'active' : ''}>
-            <Link to="/user/dashboard/view-expense">
+            <Link to="/user/dashboard/add-expense">
               <FontAwesomeIcon icon={faCreditCard} /> <span>Expenses</span>
             </Link>
           </li>
