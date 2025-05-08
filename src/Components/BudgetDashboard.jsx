@@ -11,7 +11,7 @@ const BudgetDashboard = () => {
     const userId = localStorage.getItem("userId");
     if (!userId) return;
 
-    fetch(`http://localhost:8080/api/budgets/user/${userId}`)
+    fetch(`http://localhost:8080/budgets/user/${userId}`)
       .then((res) => res.json())
       .then((data) => setBudgets(data))
       .catch((err) => console.error(err));
