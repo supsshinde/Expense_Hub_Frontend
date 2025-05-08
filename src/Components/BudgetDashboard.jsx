@@ -5,6 +5,8 @@ import '../styles/BudgetDashboard.css';
 const BudgetDashboard = () => {
   const [budgets, setBudgets] = useState([]);
 
+  const uid = localStorage.getItem("uid");
+
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (!userId) return;
