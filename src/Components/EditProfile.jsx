@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const EditProfile = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -8,7 +8,7 @@ const EditProfile = () => {
     city: '',
     pincode: ''
   });
-
+const navigate = useNavigate();
   useEffect(() => {
     const uid = localStorage.getItem("uid");
     if (uid) {
@@ -38,7 +38,9 @@ const EditProfile = () => {
       [e.target.name]: e.target.value 
     });
   };
-
+  const handleBackToProfile = () => {
+    navigate('/user/dashboard/view-profile'); // Navigate back to profile view page
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -54,7 +56,7 @@ const EditProfile = () => {
       mobile: formData.mobile,
       city: formData.city,
       pincode: formData.pincode,
-      password: "" // You can remove this if not updating password
+    
     };
 
     try {
@@ -105,6 +107,9 @@ const EditProfile = () => {
                 <button type="submit" className="btn btn-primary w-100">Update Profile</button>
               </div>
             </form>
+            <div className="mt-3 text-center">
+              <button onClick={handleBackToProfile} className="btn btn-secondary w-100">Back to Profile</button>
+            </div>
           </div>
         </div>
       </div>
