@@ -103,6 +103,7 @@
 // export default BudgetForm;
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import '../styles/BudgetForm.css';
 
 const BudgetForm = ({ uid, fetchBudgets, editingBudget, setEditingBudget }) => {
   const [budgetAmount, setBudgetAmount] = useState("");
@@ -150,7 +151,11 @@ const BudgetForm = ({ uid, fetchBudgets, editingBudget, setEditingBudget }) => {
 
   return (
     <form onSubmit={handleSubmit} className="budget-form">
-      <h3>{editingBudget ? "Edit Budget" : "Add Budget"}</h3>
+  <h3>{editingBudget ? "Edit Budget" : "Add Budget"}</h3>
+
+  <div className="form-row">
+    <div className="form-group">
+      <label>Budget Amount</label>
       <input
         type="number"
         value={budgetAmount}
@@ -158,15 +163,31 @@ const BudgetForm = ({ uid, fetchBudgets, editingBudget, setEditingBudget }) => {
         required
         placeholder="Enter budget amount"
       />
+    </div>
+
+    <div className="form-group">
+      <label>End Date</label>
       <input
         type="date"
         value={endDate}
         onChange={(e) => setEndDate(e.target.value)}
         required
       />
-      <button type="submit">{editingBudget ? "Update" : "Add"}</button>
-      {editingBudget && <button onClick={resetForm} type="button">Cancel</button>}
-    </form>
+    </div>
+  </div>
+
+  <div className="button-group">
+    <button type="submit" className="btn-submit">
+      {editingBudget ? "Update" : "Add"}
+    </button>
+    {editingBudget && (
+      <button onClick={resetForm} type="button" className="btn-cancel">
+        Cancel
+      </button>
+    )}
+  </div>
+</form>
+
   );
 };
 

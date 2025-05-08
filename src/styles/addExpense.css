@@ -1,40 +1,50 @@
 .add-expense-container {
-  padding: 20px;
-  background-color: #fff;
+  padding: 40px 30px;
+  margin: auto;
+  max-width: 700px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease-in-out;
 }
 
 .add-expense-header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .add-expense-header h2 {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1c3d5a;
   margin: 0;
 }
 
 .btn-view-expense {
-  background-color: #007bff;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
+  background-color: #0069d9;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 600;
   text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 105, 217, 0.3);
+  transition: background 0.3s, transform 0.2s;
 }
 
 .btn-view-expense:hover {
-  background-color: #0056b3;
+  background-color: #004ea1;
+  transform: scale(1.03);
 }
 
 .expense-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: 500px;
+  gap: 24px;
+  width: 100%;
 }
 
 .form-group {
@@ -43,27 +53,75 @@
 }
 
 .form-group label {
-  font-weight: 500;
-  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
 }
 
-.form-group input {
-  padding: 10px;
+.form-group input,
+.form-group select {
+  padding: 12px 14px;
+  font-size: 16px;
+  border-radius: 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #0069d9;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 105, 217, 0.15);
+  outline: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 45%;
 }
 
 .btn-submit-expense {
   background-color: #28a745;
   color: white;
-  padding: 10px 16px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 12px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: 500;
+  align-self: center;
+  width: 40%;
+  box-shadow: 0 6px 14px rgba(40, 167, 69, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-submit-expense:hover {
-  background-color: #218838;
+  background-color: #1e7e34;
+  transform: scale(1.03);
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 600px) {
+  .add-expense-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .btn-view-expense,
+  .btn-submit-expense {
+    width: 100%;
+  }
 }

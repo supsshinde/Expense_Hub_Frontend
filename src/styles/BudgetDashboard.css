@@ -1,62 +1,110 @@
 .budget-dashboard-container {
-  padding: 20px;
-  background-color: #fff;
+  padding: 40px 30px;
+  max-width: 1000px;
+  margin: 30px auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease-in-out;
 }
 
 .budget-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 .budget-header h2 {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1c3d5a;
+  margin: 0;
 }
 
 .btn-add-budget {
   background-color: #28a745;
   color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
+  padding: 10px 18px;
+  border-radius: 10px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
 }
 
 .btn-add-budget:hover {
-  background-color: #218838;
+  background-color: #1e7e34;
+  transform: scale(1.03);
 }
 
 .budget-table {
   width: 100%;
   border-collapse: collapse;
+  overflow-x: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  background-color: #ffffff;
 }
 
 .budget-table th,
 .budget-table td {
-  border: 1px solid #ddd;
-  padding: 10px 14px;
+  padding: 14px 16px;
   text-align: left;
+  font-size: 15px;
 }
 
 .budget-table th {
-  background-color: #f2f2f2;
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
 }
 
 .budget-table tr:nth-child(even) {
   background-color: #fafafa;
 }
 
+.budget-table tr:hover {
+  background-color: #f0f8ff;
+  transition: background-color 0.2s;
+}
+
 .btn-edit {
   background-color: #007bff;
   color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 6px 14px;
+  border-radius: 8px;
   text-decoration: none;
   font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 8px rgba(0, 123, 255, 0.3);
 }
 
 .btn-edit:hover {
   background-color: #0056b3;
+  transform: scale(1.02);
+}
+
+/* ✅ Responsive Table for Small Devices */
+@media (max-width: 768px) {
+  .budget-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .budget-table th,
+  .budget-table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .btn-add-budget {
+    width: 100%;
+    text-align: center;
+  }
 }

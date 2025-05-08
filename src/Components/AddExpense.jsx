@@ -89,6 +89,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/AddExpense.css';
+
 const AddExpense = () => {
   const [expense, setExpense] = useState({
     ename: '',
@@ -135,32 +136,86 @@ const AddExpense = () => {
   };
 
   return (
-    <div>
-      <h2>Add Expense</h2>
-      <form onSubmit={handleSubmit}>
-  <input name="ename" placeholder="Expense Name" value={expense.ename} onChange={handleChange} required />
-  <input name="eprice" placeholder="Amount" type="number" value={expense.eprice} onChange={handleChange} required />
-  
-  <select name="paymentMethod" value={expense.paymentMethod} onChange={handleChange} required>
-    <option value="">Select Payment Method</option>
-    <option value="Card">Card</option>
-    <option value="Cash">Cash</option>
-    <option value="UPI">UPI</option>
-  </select>
+    <div className="add-expense-container">
+  <div className="add-expense-header">
+    <h2>Add Expense</h2>
+    <a href="/user/dashboard/view-expense" className="btn-view-expense">View Expenses</a>
+  </div>
 
-  <input name="description" placeholder="Description" value={expense.description} onChange={handleChange} required />
-  
-  <select name="cid" value={expense.cid} onChange={handleChange} required>
-    <option value="">Select Category</option>
-    {categories.map(c => (
-      <option key={c.cid} value={c.cid}>{c.cname}</option>
-    ))}
-  </select>
-  
-  <button type="submit">Add Expense</button>
-</form>
-
+  <form className="expense-form" onSubmit={handleSubmit}>
+    <div className="form-group">
+      <label htmlFor="ename">Expense Name</label>
+      <input
+        name="ename"
+        id="ename"
+        placeholder="Enter expense name"
+        value={expense.ename}
+        onChange={handleChange}
+        required
+      />
     </div>
+
+    <div className="form-group">
+      <label htmlFor="eprice">Amount</label>
+      <input
+        name="eprice"
+        id="eprice"
+        type="number"
+        placeholder="Enter amount"
+        value={expense.eprice}
+        onChange={handleChange}
+        required
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="paymentMethod">Payment Method</label>
+      <select
+        name="paymentMethod"
+        id="paymentMethod"
+        value={expense.paymentMethod}
+        onChange={handleChange}
+        required
+      >
+        <option value="">Select Payment Method</option>
+        <option value="Card">Card</option>
+        <option value="Cash">Cash</option>
+        <option value="UPI">UPI</option>
+      </select>
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="description">Description</label>
+      <input
+        name="description"
+        id="description"
+        placeholder="Enter description"
+        value={expense.description}
+        onChange={handleChange}
+        required
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="cid">Category</label>
+      <select
+        name="cid"
+        id="cid"
+        value={expense.cid}
+        onChange={handleChange}
+        required
+      >
+        <option value="">Select Category</option>
+        {categories.map(c => (
+          <option key={c.cid} value={c.cid}>{c.cname}</option>
+        ))}
+      </select>
+    </div>
+
+    <button type="submit" className="btn-submit-expense">Add Expense</button>
+  </form>
+</div>
+
   );
 };
 
