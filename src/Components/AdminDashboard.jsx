@@ -10,7 +10,7 @@ const AdminDashboard = () => {
   const [totalUsers, setTotalUsers] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
-  const isDashboardMain = location.pathname === "/admin-dashboard";
+  const isDashboardMain = location.pathname === "/adminDashboard";
 
   useEffect(() => {
     const fetchCounts = async () => {
@@ -72,7 +72,7 @@ const AdminDashboard = () => {
         <h2 className="sidebar-title">AdminHub</h2>
         <nav className="sidebar-nav">
           <div className="menu">
-            <button className="menu-item" onClick={() => navigate("/admin-dashboard")}>
+            <button className="menu-item" onClick={() => navigate("/adminDashboard")}>
               <FaChartPie /> &nbsp; Dashboard
             </button>
           </div>

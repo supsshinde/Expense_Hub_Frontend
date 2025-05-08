@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "../styles/Login.css";
 
-const LoginPage = () => {
+const AdminLogin = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -18,8 +21,15 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    // You can add your login logic here
+
+    // Simulate login validation logic
+    if (formData.username && formData.password) {
+      console.log("Login data:", formData);
+      // Navigate to AdminDashboard
+      navigate("/adminDashboard");
+    } else {
+      alert("Please enter both username and password.");
+    }
   };
 
   return (
@@ -55,10 +65,9 @@ const LoginPage = () => {
         </div>
 
         <button type="submit" className="login-button">Login</button>
-
       </form>
     </div>
   );
 };
 
-export default LoginPage;
+export default AdminLogin;

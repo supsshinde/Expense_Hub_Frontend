@@ -44,7 +44,7 @@ const App = () => {
 
   const hideNav =
     location.pathname.includes("/user/dashboard") ||
-    location.pathname.includes("/admin-dashboard");
+    location.pathname.includes("/adminDashboard");
 
   return (
     <>
@@ -77,15 +77,14 @@ const App = () => {
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/about">About</NavLink>
                 </li>
-                <li className="nav-item dropdown">
-                  <NavLink className="nav-link dropdown-toggle" to="#" id="profileDropdown" role="button" data-bs-toggle="dropdown">
-                    Profile
-                  </NavLink>
-                  <ul className="dropdown-menu" aria-labelledby="profileDropdown">
-                    <li><NavLink className="dropdown-item" to="/userRegister">User</NavLink></li>
-                    <li><NavLink className="dropdown-item" to="/adminLogin">Admin</NavLink></li>
-                  </ul>
+                
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/userRegister">User</NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/adminLogin">Admin</NavLink>
+                </li>
+
               </ul>
             </div>
           </div>
@@ -103,7 +102,7 @@ const App = () => {
           <Route path="/loginUser" element={<LoginUser />} />
           <Route path="/resetPassword" element={<ForgotPassword />} />
 
-          <Route path="/admin-dashboard" element={<AdminDashboard />}>
+          <Route path="/adminDashboard" element={<AdminDashboard />}>
             <Route path="add-category" element={<AddCategory />} />
             <Route path="view-category" element={<ViewCategory />} />
             <Route path="all-users" element={<AllUsers />} />
@@ -119,9 +118,9 @@ const App = () => {
             <Route path="edit-profile" element={<EditProfile />} />
           </Route>
 
-          <Route path="/profile/user" element={<LoginUser />} />
-          <Route path="/profile/admin" element={<AdminLogin />} />
-        </Routes>
+          <Route path="adminLogin" element={<AdminLogin />} />
+
+         </Routes>
       </div>
     </>
   );
