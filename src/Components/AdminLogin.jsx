@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import "../styles/Login.css";
 
 const AdminLogin = () => {
@@ -19,16 +20,25 @@ const AdminLogin = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Simulate login validation logic
-    if (formData.username && formData.password) {
-      console.log("Login data:", formData);
-      // Navigate to AdminDashboard
-      navigate("/adminDashboard");
-    } else {
-      alert("Please enter both username and password.");
+    try {
+      const response = await axios.post("http://localhost:8080/admin/adminLogin", null, {
+        params: {
+          username: formData.username,
+          password: formData.password
+        }
+      });
+
+      if (response.data === true) {
+        navigate("/adminDashboard");
+      } else {
+        alert("Invalid username or password");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+      alert("Login failed. Please try again.");
     }
   };
 
