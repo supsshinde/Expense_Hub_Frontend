@@ -195,6 +195,11 @@
   color: #333;
   font-size: 18px;
 }
+.user-avatar {
+  border-radius: 50%;
+  color: #555;
+}
+
 
 @media (max-width: 768px) {
   .header {

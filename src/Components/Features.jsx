@@ -13,26 +13,30 @@ const features = [
   {
     id: 1,
     image: inventoryImg,
-    title: "Smart Inventory Tracking",
-    description: "Real-time monitoring of all stock items with automated alerts for low inventory.",
+    // title: "Smart Inventory Tracking",
+    // description: "Real-time monitoring of all stock items with automated alerts for low inventory.",
+    title: "Budget Management",
+    description: "Set monthly budgets and get alerts when expenses exceed your limit.",
   },
   {
     id: 2,
     image: vendorImg,
-    title: "Vendor Integration",
-    description: "Seamless connection with suppliers for automated ordering and communication.",
+    // title: "Vendor Integration",
+    // description: "Seamless connection with suppliers for automated ordering and communication.",
+    title: "Expense Tracking",
+    description: "Easily record and categorize your daily expenses for better money management.",
   },
   {
     id: 3,
     image: analyticsImg,
-    title: "Advanced Analytics",
-    description: "Comprehensive dashboards with predictive analytics for better decision making.",
+    title: "Detailed Reports & Analytics",
+    description: "Visualize your spending patterns with charts and downloadable reports.",
   },
   {
     id: 4,
     image: mobileImg,
-    title: "Mobile Access",
-    description: "Manage your inventory from anywhere with our mobile-friendly interface.",
+    title: "Anywhere Access",
+    description: "Access your expense data securely from any device, anytime.",
   },
 ];
 

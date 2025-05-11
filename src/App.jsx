@@ -32,6 +32,7 @@ import UpdateExpense from "./Components/UpdateExpense";
 import ViewProfile from "./Components/ViewProfile";
 import EditProfile from "./Components/EditProfile";
 import AdminLogin from "./Components/AdminLogin";
+import UserReport from "./Components/UserReport";
 
 const AppWrapper = () => (
   <Router>
@@ -115,6 +116,8 @@ const App = () => {
             {/* <Route path="add-budget" element={<BudgetDashboard />} /> */}
             {/* <Route path="view-budget" element={<BudgetDashboard />} /> */}
             <Route path="budget" element={<BudgetDashboard />} />
+            <Route path="report" element={<UserReport />} />
+
 
             <Route path="view-profile" element={<ViewProfile />} />
             <Route path="edit-profile" element={<EditProfile />} />

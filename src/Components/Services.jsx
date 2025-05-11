@@ -10,15 +10,15 @@ const portfolioItemsLeft = [
   {
     imgSrc: Service1,
     alt: "Inventory Management",
-    title: "Smart Inventory Tracking",
-    description: "Real-time monitoring of all stock items with automated alerts for low inventory.",
+     title: "Budget Management",
+    description: "Set monthly budgets and get alerts when expenses exceed your limit.",
     link: "#",
   },
   {
     imgSrc: Service2,
     alt: "Vendor Integration",
-    title: "Vendor Integration",
-    description: "Seamless connection with suppliers for automated ordering and communication.",
+    title: "Expense Tracking",
+    description: "Easily record and categorize your daily expenses for better money management.",
     link: "#",
   },
 ];
@@ -27,15 +27,15 @@ const portfolioItemsRight = [
   {
     imgSrc: Service3,
     alt: "Analytics Dashboard",
-    title: "Advanced Analytics",
-    description: "Comprehensive dashboards with predictive analytics for better decision making.",
+    title: "Detailed Reports & Analytics",
+    description: "Visualize your spending patterns with charts and downloadable reports.",
     link: "#",
   },
   {
     imgSrc: Service4,
     alt: "Mobile Access",
-    title: "Mobile Access",
-    description: "Manage your inventory from anywhere with our mobile-friendly interface.",
+     title: "Anywhere Access",
+    description: "Access your expense data securely from any device, anytime.",
     link: "#",
   },
 ];
@@ -45,7 +45,7 @@ const ServiceSection = () => {
     <section className="Service-section">
       <div className="section-header">
         <h2>Our Premium Services</h2>
-        <p>Explore the key features of our Mess Store Prediction System that help streamline your inventory management.</p>
+        <p>Explore the key features of our Expense Tracker System that help streamline your expense management.</p>
       </div>
 
       <div className="Service-grid">
