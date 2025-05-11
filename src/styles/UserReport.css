@@ -1,0 +1,136 @@
+/* UserReport.css */
+
+.report-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.report-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filters label {
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.filters input[type="date"] {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  min-width: 150px;
+}
+
+.filters button {
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  margin-top: auto;
+  height: 40px;
+}
+
+.filters button:hover {
+  background-color: #005fa3;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.report-table th,
+.report-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.report-table th {
+  background-color: #f5f5f5;
+  color: #333;
+  font-weight: 600;
+}
+
+.report-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.report-table td {
+  color: #444;
+}
+
+h3 {
+  text-align: right;
+  margin-top: 1.5rem;
+  color: #222;
+  font-size: 1.1rem;
+}
+.export-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.csv-button {
+  padding: 10px 20px;
+  background-color: #FF8C00;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.csv-button:hover {
+  background-color: #e07b00;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filters label {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .report-table {
+    font-size: 0.9rem;
+  }
+
+  .report-table th,
+  .report-table td {
+    padding: 10px;
+  }
+
+  h3 {
+    text-align: center;
+  }
+}

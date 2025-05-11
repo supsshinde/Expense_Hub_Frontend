@@ -39,7 +39,7 @@ function UpdateExpense() {
     axios.put(`http://localhost:8080/user/updateExpense/${eid}`, expense)
       .then((res) => {
         toast.success("Expense updated successfully!");
-        setTimeout(() => navigate("/dashboard/view-expense"), 2000);
+        setTimeout(() => navigate("/user/dashboard/view-expense"), 2000);
       })
       .catch((err) => {
         console.error(err);
